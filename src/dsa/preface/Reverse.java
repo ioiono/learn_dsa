@@ -14,6 +14,11 @@ public class Reverse {
         }
     } //O(hi - lo +1)
 
+    /**
+     * 实际上， 属于尾递归形式的算法，均可以简捷地转换为等效的迭代版本。
+     * 首先在起始位置插入一 个跳转标志next，然后将尾递归语句调用替换为一条指向next标志的跳转语句。
+     */
+
     private static void reverse(int[] arr, int lo, int hi) {
         while (lo < hi) swap(arr, lo++, hi--);
     } //O(hi - lo + 1)
