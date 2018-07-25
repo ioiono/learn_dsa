@@ -1,4 +1,4 @@
-package dsa.preface;
+package dsa.preface.java;
 
 public class Power {
     private static int power1(int n) {  //幂函数2^n算法(蛮力迭代版)，n >= 0

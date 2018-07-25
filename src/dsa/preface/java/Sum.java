@@ -1,4 +1,4 @@
-package dsa.preface;
+package dsa.preface.java;
 
 import java.util.Arrays;
 import java.util.List;

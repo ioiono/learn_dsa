@@ -1,4 +1,4 @@
-package dsa.preface;
+package dsa.preface.java;
 
 public class Reverse {
     private static void swap(int[] arr, int i, int j) {
