@@ -41,6 +41,49 @@ public class MinimumSizeSubarraySum {
         return (min != Integer.MAX_VALUE) ? min : 0;
     }
 
+    //A better brute force
+    /**
+     * Complexity analysis
+     *
+     * Time complexity: O(n^2)
+     *
+     * Time complexity to find all the subarrays is O(n^2)
+     *
+     * Sum of the subarrays is calculated in O(1)O(1) time.
+     * Thus, the total time complexity: O(n^2 * 1) = O(n^2)
+     *
+     * Space complexity: O(n)O(n) extra space.
+     *
+     * Additional O(n) space for sums vector than in Approach #1.
+     */
+    private static int minSAL2(int s, int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int res = Integer.MAX_VALUE;
+        int[] sums = new int[nums.length];
+        sums[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            sums[i] = sums[i - 1] + nums[i];
+        }
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i; j < nums.length; j++) {
+                // Sum of subarray from ii to jj is calculated as: sum=sums[j]−sums[i]+nums[i],
+                // wherein sums[j]−sums[i] is the sum from (i+1)th element to the jth element.
+
+                int sum = sums[j] - sums[i] + nums[i];
+                if (sum >= s) {
+                    res = Math.min(res, (j - i + 1));
+                    break;                    //Found the smallest subarray with sum>=s starting with index i, hence move to next index
+                }
+            }
+        }
+        return (res != Integer.MAX_VALUE) ? res : 0;
+
+
+    }
+
     //because each element is visited at most, twice,
     //so is more like O(2n), but in big-o you discard constants,
     //then is O(n)
@@ -61,8 +104,11 @@ public class MinimumSizeSubarraySum {
 
     public static void main(String[] args) {
         System.out.println(minSAL(7, new int[]{2, 3, 1, 2, 4, 3}));
+        System.out.println(minSAL2(7, new int[]{2, 3, 1, 2, 4, 3}));
         System.out.println(minTP(7, new int[]{2, 3, 1, 2, 4, 3}));
+
         System.out.println(minSAL(213, new int[]{12, 28, 83, 4, 25, 26, 25, 2, 25, 25, 25, 12}));
+        System.out.println(minSAL2(213, new int[]{12, 28, 83, 4, 25, 26, 25, 2, 25, 25, 25, 12}));
         System.out.println(minTP(213, new int[]{12, 28, 83, 4, 25, 26, 25, 2, 25, 25, 25, 12}));
     }
 }
