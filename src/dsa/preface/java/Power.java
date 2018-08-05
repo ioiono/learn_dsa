@@ -45,10 +45,33 @@ public class Power {
         return r;
     } //O(log(b))
 
+    private static double power3(double a, int b) {
+
+
+        if (b < 0) {
+            b = -b;
+            a = 1 / a;
+        }
+
+        double r = 1;
+        double base = a;
+
+        while (b != 0) {
+            if (1 == (b & 1)) {
+                r *= base;
+            }
+            base *= base;
+            b /= 2;
+        }
+        return r;
+    } //O(log(b))
+
     public static void main(String[] args) {
         System.out.println(power1(20));
         System.out.println(power2(20));
         System.out.println(power2(2, 20));
         System.out.println(power3(2, 20));
+        System.out.println(power3(2, 10));
+        System.out.println(power3(2.0, -2));
     }
 }
