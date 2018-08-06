@@ -1,8 +1,4 @@
-package fmt.queue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+package fmt.queueAndBFS;
 
 class CircularQueue {
 
@@ -14,7 +10,7 @@ class CircularQueue {
     private int size;
 
     /**
-     * Initialize your data structure here. Set the size of the queue to be k.
+     * Initialize your data structure here. Set the size of the queueAndBFS to be k.
      */
     CircularQueue(int size) {
         this.data = new int[size];
@@ -24,21 +20,21 @@ class CircularQueue {
     }
 
     /**
-     * Checks whether the circular queue is empty or not.
+     * Checks whether the circular queueAndBFS is empty or not.
      */
     public boolean isEmpty() {
         return this.pStart == -1 && this.pEnd == -1;
     }
 
     /**
-     * Checks whether the circular queue is full or not.
+     * Checks whether the circular queueAndBFS is full or not.
      */
     public boolean isFull() {
         return (this.pEnd + 1) % this.size == this.pStart;
     }
 
     /**
-     * Insert an element into the circular queue. Return true if the operation is successful.
+     * Insert an element into the circular queueAndBFS. Return true if the operation is successful.
      */
     public boolean enQueue(int value) {
         if (this.isFull()) {
@@ -54,7 +50,7 @@ class CircularQueue {
     }
 
     /**
-     * Delete an element from the circular queue. Return true if the operation is successful.
+     * Delete an element from the circular queueAndBFS. Return true if the operation is successful.
      */
     public boolean deQueue() {
         if (this.isEmpty()) {
@@ -72,14 +68,14 @@ class CircularQueue {
     }
 
     /**
-     * Get the front item from the queue.
+     * Get the front item from the queueAndBFS.
      */
     public int Front() {
         return this.isEmpty() ? -1 : this.data[this.pStart];
     }
 
     /**
-     * Get the last item from the queue.
+     * Get the last item from the queueAndBFS.
      */
     public int Rear() {
         return this.isEmpty() ? -1 : this.data[this.pEnd];
@@ -94,7 +90,7 @@ public class CircularQueueTest {
         System.out.println(circularQueue.enQueue(1));  // return true
         System.out.println(circularQueue.enQueue(2));  // return true
         System.out.println(circularQueue.enQueue(3));  // return true
-        System.out.println(circularQueue.enQueue(4));  // return false, the queue is full
+        System.out.println(circularQueue.enQueue(4));  // return false, the queueAndBFS is full
         System.out.println(circularQueue.Rear());  // return 3
         System.out.println(circularQueue.isFull());  // return true
         System.out.println(circularQueue.deQueue());  // return true

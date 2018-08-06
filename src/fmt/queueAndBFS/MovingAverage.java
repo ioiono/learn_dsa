@@ -1,4 +1,4 @@
-package fmt.queue;
+package fmt.queueAndBFS;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -9,7 +9,7 @@ import java.util.Queue;
  * double next(int val) { if (q.size() >= size) { sum -= q.front(); q.pop(); } q.push(val); sum += val; return sum /
  * q.size(); }
  * <p>
- * private: queue<int> q; int size; double sum; };
+ * private: queueAndBFS<int> q; int size; double sum; };
  */
 public class MovingAverage {
 

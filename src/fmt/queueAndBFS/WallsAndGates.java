@@ -1,4 +1,4 @@
-package fmt.queue;
+package fmt.queueAndBFS;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -33,7 +33,6 @@ public class WallsAndGates {
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[i].length; j++) {
                 if (rooms[i][j] == 0) {
-                    System.out.println(i+", " +j);
                     queue.offer(new Cell(i, j));
                 }
             }
@@ -54,7 +53,7 @@ public class WallsAndGates {
         if (x < 0 || x >= rooms.length ||
                 y < 0 || y >= rooms[0].length ||
                 rooms[x][y] == -1 ||
-                rooms[x][y] != Integer.MAX_VALUE) {//has been visited or 0
+                rooms[x][y] != Integer.MAX_VALUE) { //has been visited or 0
             return;
         }
         rooms[x][y] = steps;

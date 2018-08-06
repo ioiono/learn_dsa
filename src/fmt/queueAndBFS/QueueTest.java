@@ -1,4 +1,4 @@
-package fmt.queue;
+package fmt.queueAndBFS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ class MyQueue {
     }
 
     /**
-     * Insert an element into the queue. Return true if the operation is successful.
+     * Insert an element into the queueAndBFS. Return true if the operation is successful.
      */
     boolean enQueue(int x) {
         data.add(x);
@@ -26,7 +26,7 @@ class MyQueue {
     }
 
     /**
-     * Delete an element from the queue. Return true if the operation is successful.
+     * Delete an element from the queueAndBFS. Return true if the operation is successful.
      */
     boolean deQueue() {
         if (isEmpty()) {
@@ -37,14 +37,14 @@ class MyQueue {
     }
 
     /**
-     * Get the front item from the queue.
+     * Get the front item from the queueAndBFS.
      */
     int Front() {
         return data.get(pStart);
     }
 
     /**
-     * Checks whether the queue is empty or not.
+     * Checks whether the queueAndBFS is empty or not.
      */
     boolean isEmpty() {
         return pStart >= data.size();
