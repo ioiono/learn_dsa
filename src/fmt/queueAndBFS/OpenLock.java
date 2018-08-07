@@ -5,7 +5,7 @@ import java.util.*;
 public class OpenLock {
 
 
-    int openLock(String[] deadends, String target) {
+   private int openLock(String[] deadends, String target) {
         String start = "0000";
         Set<String> dead = new HashSet<>();
         Collections.addAll(dead, deadends);
@@ -20,6 +20,8 @@ public class OpenLock {
         int steps = 0;
 
         while (!queue.isEmpty()) {
+            steps++;
+
             int size = queue.size();
             for (int s = 0; s < size; s++) {
                 String node = queue.poll();
@@ -29,7 +31,6 @@ public class OpenLock {
                         chars[i] = (char) (((chars[i] - '0') + j + 10) % 10 + '0');
                         String next = new String(chars);
                         if (next.equals(target)) {
-                            steps++;
                             return steps;
                         }
                         if (dead.contains(next) || visited.contains(next)) {
