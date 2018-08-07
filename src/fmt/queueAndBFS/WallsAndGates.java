@@ -53,16 +53,49 @@ public class WallsAndGates {
         if (x < 0 || x >= rooms.length ||
                 y < 0 || y >= rooms[0].length ||
                 rooms[x][y] == -1 ||
-                rooms[x][y] != Integer.MAX_VALUE) { //has been visited or 0
+                rooms[x][y] <= steps) { //has been visited or 0
+//                rooms[x][y] != Integer.MAX_VALUE) { //has been visited or 0
             return;
         }
         rooms[x][y] = steps;
         queue.add(new Cell(x, y));
     }
 
+    private void wallsAndGatesDFS(int[][] rooms) {
+        for (int i = 0; i < rooms.length; i++) {
+            for (int j = 0; j < rooms[i].length; j++) {
+                if (rooms[i][j] == 0) {
+                    dfs(rooms, i, j, 0);
+                }
+            }
+        }
+    }
+
+    void dfs(int[][] rooms, int x, int y, int steps) {
+        if (x < 0 || x >= rooms.length ||
+                y < 0 || y >= rooms[0].length ||
+                rooms[x][y] == -1 ||
+                rooms[x][y] < steps) {
+            return;
+        }
+
+        rooms[x][y] = steps;
+        dfs(rooms, x + 1, y, steps + 1);
+        dfs(rooms, x - 1, y, steps + 1);
+        dfs(rooms, x, y + 1, steps + 1);
+        dfs(rooms, x, y - 1, steps + 1);
+
+
+    }
     public static void main(String[] args) {
         int INF = Integer.MAX_VALUE;
         int[][] ints = new int[][]{
+                {INF, -1, 0, INF},
+                {INF, INF, INF, -1},
+                {INF, -1, INF, -1},
+                {0, -1, INF, INF},
+        };
+        int[][] ints2 = new int[][]{
                 {INF, -1, 0, INF},
                 {INF, INF, INF, -1},
                 {INF, -1, INF, -1},
@@ -73,6 +106,9 @@ public class WallsAndGates {
         WallsAndGates wag = new WallsAndGates();
         wag.wallsAndGates(ints);
         System.out.println(Arrays.deepToString(ints));
+        System.out.println("===================");
+        wag.wallsAndGatesDFS(ints2);
+        System.out.println(Arrays.deepToString(ints2));
 
     }
 

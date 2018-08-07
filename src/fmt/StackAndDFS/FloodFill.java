@@ -70,7 +70,7 @@ class Solution {
 
 }
 
-public class DecodeString {
+public class FloodFill {
     public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(Arrays.deepToString(s.floodFill(new int[][]{{1, 1, 1, 1}, {1, 1, 0, 1}, {1, 1, 0, 0}, {1, 0, 0, 1}}, 1, 1, 2)));
