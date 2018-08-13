@@ -3,6 +3,7 @@ package fmt.BinarySearch;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 /**
@@ -96,7 +97,7 @@ public class FindtheDuplicateNumber {
         return lo;
     }
 
-
+    // TODO LinkedList cycle ii O(N)
     public static void main(String[] args) {
         FindtheDuplicateNumber dup = new FindtheDuplicateNumber();
         int[] n0 = new int[]{1, 3, 4, 2, 2};
