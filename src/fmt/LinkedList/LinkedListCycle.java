@@ -46,6 +46,7 @@ public class LinkedListCycle {
         return slow == fast;
     }
 
+    // use this ***
     public boolean hasCycleIII(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
