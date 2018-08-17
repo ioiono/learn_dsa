@@ -100,6 +100,29 @@ public class IntersectionofTwoArrays {
         return false;
     }
 
+    // time : O(n) space : O(n);
+    public static int[] intersection3(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0) {
+            return new int[]{};
+        }
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> ret = new HashSet<>();
+        for (Integer num : nums1) {
+            set.add(num);
+        }
+        for (Integer num : nums2) {
+            if (set.contains(num)) {
+                ret.add(num);
+            }
+        }
+        int k = 0;
+        int[] res = new int[ret.size()];
+        for (Integer num : ret) {
+            res[k++] = num;
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
