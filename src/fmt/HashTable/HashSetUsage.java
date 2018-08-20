@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
-public class HeashSetUsage {
+public class HashSetUsage {
 
     public static void main(String[] args) {
         // 1. initialize the hash set
