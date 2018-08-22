@@ -30,5 +30,8 @@ public class ListInterfaceUsage {
         System.out.println("SHUFFLE-> " + list);
         Collections.rotate(list, 2);
         System.out.println("ROTATE-> "+ list);
+        System.out.println(Collections.replaceAll(list, 2, 233));
+        System.out.println(list);
+
     }
 }
