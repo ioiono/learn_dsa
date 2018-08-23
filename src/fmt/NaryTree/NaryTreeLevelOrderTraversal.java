@@ -45,6 +45,21 @@ public class NaryTreeLevelOrderTraversal {
         return order;
     }
 
+    private List<List<Integer>> levelOrder2(Node node, int level, List<List<Integer>> order) {
+        if (node == null) {
+            return order;
+        }
+        if (order.size() <= level) {
+            order.add(new ArrayList<>());
+        }
+        order.get(level).add(node.val);
+
+        for (Node n : node.children) {
+            levelOrder(n, level + 1, order);
+        }
+        return order;
+    }
+
     public static void main(String[] args) {
         List<Node> ch2 = new ArrayList<>(Arrays.asList(new Node(5, new ArrayList<>()), new Node(6, new ArrayList<>())));
         List<Node> ch1 = new ArrayList<>(Arrays.asList(new Node(3, ch2), new Node(2, new ArrayList<>()), new Node(4, new ArrayList<>())));
