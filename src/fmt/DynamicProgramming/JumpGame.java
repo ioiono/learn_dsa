@@ -1,11 +1,19 @@
 package fmt.DynamicProgramming;
 
-enum Index {
-    GOOD, BAD, UNKNOWN
-}
-
 public class JumpGame {
-    public boolean canJumpFromPosition(int position, int[] nums) {
+
+    /**
+     * Time complexity : O(2^n). Space complexity : O(n). ​​
+     *
+     * @param nums
+     *
+     * @return
+     */
+    public boolean canJump(int[] nums) {
+        return canJumpFromPosition(0, nums);
+    }
+
+    private boolean canJumpFromPosition(int position, int[] nums) {
         if (position == nums.length - 1) {
             return true;
         }
@@ -18,17 +26,6 @@ public class JumpGame {
         }
 
         return false;
-    }
-
-    /**
-     * Time complexity : O(2^n). Space complexity : O(n). ​​
-     *
-     * @param nums
-     *
-     * @return
-     */
-    public boolean canJump(int[] nums) {
-        return canJumpFromPosition(0, nums);
     }
 
 
@@ -66,9 +63,9 @@ public class JumpGame {
         }
         return reach >= n - 1;
     }
-
+    // clean code
     public boolean canJumpSixms(int[] nums) {
-        int max = 0;
+        int max = 0; // furthest you can jump to
         for (int i = 0; i < nums.length; i++) {
             if (i > max) return false;
             max = Math.max(nums[i] + i, max);
