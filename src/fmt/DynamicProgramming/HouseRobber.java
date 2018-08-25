@@ -49,19 +49,29 @@ public class HouseRobber {
         }
         return memo[nums.length];
     }
-
+    // clean code XD
     public int rob3(int[] nums) {
         if (nums.length == 0) return 0;
 
-        int m0 = 0;
-        int m1 = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            int val = nums[i];
-            int tmp = m1;
-            m1 = Math.max(m1, m0 + val);
-            m0 = tmp;
+        int dp2 = 0;
+        int dp1 = 0; // dp1 -> after go through first n houses, the max money you can get.
+        for (int num : nums) {
+            int dp = Math.max(dp1, dp2 + num);;
+            dp2 = dp1;
+            dp1 = dp;
         }
-        return m1;
+        return dp1;
+    }
+
+    public int rob4(int[] nums) {
+        int prevNo = 0;
+        int prevYes = 0;
+        for (int n : nums) {
+            int temp = prevNo;
+            prevNo = Math.max(prevNo, prevYes);
+            prevYes = n + temp;
+        }
+        return Math.max(prevNo, prevYes);
     }
 
     public static void main(String[] args) {
