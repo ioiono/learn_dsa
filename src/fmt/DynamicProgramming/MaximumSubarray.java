@@ -37,6 +37,16 @@ public class MaximumSubarray {
         return res;
     }
 
+    public int maxSubArray4(int[] nums) {
+        int max = nums[0];
+        int dp = 0;
+        for (int num : nums) {
+            dp = Math.max(num, dp + num);
+            max = Math.max(max, dp);
+        }
+        return max;
+    }
+
     // bf
     public int maxSubArray3(int[] nums) {
         int max = nums[0];
