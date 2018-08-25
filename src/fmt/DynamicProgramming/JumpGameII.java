@@ -1,6 +1,38 @@
 package fmt.DynamicProgramming;
 
 public class JumpGameII {
+    public int jump5ms(int[] nums) {
+        int start = 0;
+        int end = 1;
+        int next = 0;
+        int step = 0;
+        while (end < nums.length) {
+            for (int i = start; i < end; i++)
+                next = Math.max(next, i + nums[i]);
+            if (next < end)
+                return -1;
+            start = end;
+            end = next + 1;
+            step++;
+        }
+        return step;
+    }
+
+    public int jump6ms(int[] nums) {
+        int[] results = new int[nums.length];
+        int farthest = 0;
+        int steps = 0;
+        for (int index = 0; index < nums.length; index++) {
+            //  if(index <= farthest){
+            int newfarthest = Math.max(farthest, Math.min(nums[index] + index, nums.length - 1));
+            for (int next = farthest + 1; next <= newfarthest; next++) {
+                results[next] = results[index] + 1;
+            }
+            farthest = newfarthest;
+            //}
+        }
+        return results[nums.length - 1];
+    }
 
     //time : O(n) space : O(1) Greedy
     public int jump(int[] nums) {
