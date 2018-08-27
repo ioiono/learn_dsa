@@ -11,7 +11,6 @@ public class CountingBits {
         return f;
     }
 
-    //  f[i] = f[i / 2] + i % 2.
     public int[] countBits2(int num) {
         int[] ret = new int[num + 1];
         for (int i = 1; i <= num; ++i)
