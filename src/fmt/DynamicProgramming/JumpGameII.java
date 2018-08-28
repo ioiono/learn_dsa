@@ -79,6 +79,29 @@ public class JumpGameII {
         return 0;
     }
 
+    // O(N^2)
+    public int jumpDP(int[] A) {
+        // state
+        int[] steps = new int[A.length];
+
+        // initialize
+        steps[0] = 0;
+        for (int i = 1; i < A.length; i++) {
+            steps[i] = Integer.MAX_VALUE;
+        }
+
+        // function
+        for (int i = 1; i < A.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (steps[j] != Integer.MAX_VALUE && j + A[j] >= i) {
+                    steps[i] = Math.min(steps[i], steps[j] + 1);
+                }
+            }
+        }
+
+        // answer
+        return steps[A.length - 1];
+    }
 
     public static void main(String[] args) {
 
