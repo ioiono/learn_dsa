@@ -20,7 +20,7 @@ public class Permutation {
             return;
         }
         for (int num : nums) {
-//            if (list.contains(num)) continue;       // O(N)
+            if (list.contains(num)) continue;       // O(N)
             list.add(num);
             helper(res, list, nums);
             list.remove(list.size() - 1);
@@ -52,8 +52,9 @@ public class Permutation {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 3};
+        int[] nums = new int[]{1, 2, 3,};
         Permutation p = new Permutation();
         System.out.println(p.permute(nums));
+        System.out.println(p.permute2(nums));
     }
 }
