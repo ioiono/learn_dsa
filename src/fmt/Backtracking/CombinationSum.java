@@ -23,7 +23,7 @@ import java.util.List;
 public class CombinationSum {
     public List<List<Integer>> combinationSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<>();
-        Arrays.sort(nums);
+       // Arrays.sort(nums);  //can comment this line
 
         backtrack(res, new ArrayList<>(), nums, target, 0);
 
@@ -34,7 +34,7 @@ public class CombinationSum {
         if (remain < 0) return;
         else if (remain == 0) list.add(new ArrayList<>(tempList));
         else {
-            for (int i = start; i < nums.length; i++) {
+            for (int i = start; i < nums.length && remain >= nums[i]; i++) {
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
                 tempList.remove(tempList.size() - 1);
@@ -43,6 +43,7 @@ public class CombinationSum {
     }
 
     public static void main(String[] args) {
-
+        int[] nums = new int[]{6, 7, 3, 2,};
+        System.out.println(new CombinationSum().combinationSum(nums, 9));
     }
 }
