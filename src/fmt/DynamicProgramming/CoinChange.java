@@ -1,6 +1,7 @@
 package fmt.DynamicProgramming;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * You are given coins of different denominations and a total amount of money amount. Write a function to compute the
@@ -36,14 +37,14 @@ public class CoinChange {
             return (minCost == Integer.MAX_VALUE) ? -1 : minCost;
         }
         return -1;
-    }    // Time Limit Exceeded
+    }    // Time Limit Exceeded 2^N
 
 
     public int coinChange(int[] coins, int amount) {
         int max = amount + 1;
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, max);
-        dp[0] = 0;
+        dp[0] = 0; // PS
         for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
                 if (coin <= i) {
@@ -54,18 +55,66 @@ public class CoinChange {
         return dp[amount] > amount ? -1 : dp[amount];
     }
 
+    // ~14ms
     public int coinChange2(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
-        for (int i = 1; i <= amount; i++) dp[i] = 0x7ffffffe;
+
+        for (int i = 1; i <= amount; i++) dp[i] = amount + 1;
         for (int coin : coins)
             for (int i = coin; i <= amount; i++)
-                dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-        return dp[amount] == 0x7ffffffe ? -1 : dp[amount];
+                dp[i] = Math.min(dp[i], dp[i - coin] + 1); // use current or not
+
+        System.out.println(Arrays.toString(dp));
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+
+    // DFS+GREEDY+PRUNING
+    // use largest and as many as coins first ro reduce the search space
+    private int res = Integer.MAX_VALUE;
+
+    public int coinChangeDFS(int[] coins, int amount) {
+        Arrays.sort(coins);
+        reverse(coins);
+        coinChangeDFS(coins, 0, amount, 0);
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+    private void coinChangeDFS(int[] coins, int index, int amount, int count) {
+        int coin = coins[index];
+        if (index == coins.length - 1) {
+            if (amount % coin == 0) {
+                res = Math.min(res, count + (amount / coin));
+            }
+        } else {
+            for (int k = amount / coin; k >= 0 && count + k < res; k--) {
+                // use max as many as it can use
+                coinChangeDFS(coins, index + 1, amount - k * coin, count + k);
+            }
+        }
+    }
+
+    private void reverse(int[] nums) {
+        int lo = 0, hi = nums.length - 1;
+        while (lo < hi) {
+            int t = nums[hi];
+            nums[hi] = nums[lo];
+            nums[lo] = t;
+            lo++;
+            hi--;
+        }
     }
 
     public static void main(String[] args) {
         int[] coins = new int[]{1, 2, 5, 10};
+        int[] coins2 = new int[]{1, 3, 5, 7};
+        int[] coins3 = new int[]{1, Integer.MAX_VALUE - 1};
+        System.out.println(new CoinChange().coinChangeDFS(coins3, 13));
+
         System.out.println(new CoinChange().coinChange2(coins, 11));
         System.out.println(new CoinChange().coinChange2(coins, 13));
+        System.out.println(new CoinChange().coinChangeDFS(coins, 11));
+        System.out.println(new CoinChange().coinChangeDFS(coins, 13));
+        System.out.println(new CoinChange().coinChange2(coins2, 8));
+        System.out.println(new CoinChange().coinChange2(coins2, 16));
     }
 }
