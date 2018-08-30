@@ -1,5 +1,7 @@
 package fmt.DynamicProgramming;
 
+import java.util.Arrays;
+
 /**
  * Given n items with size Ai, an integer m denotes the size of a backpack. How full you can fill this backpack?
  * <p>
@@ -20,15 +22,27 @@ public class BackPack {
      * @param m: An integer m denotes the size of a backpack
      * @param A: Given n items with size A[i]
      *
-     * @return: The maximum size
+     * @return: The maximum v
      */
     public int backPack(int m, int[] A) {
         int[] dp = new int[m + 1];
         for (int size : A) {
-            for (int j = m; j > 0; j--) {
+            for (int j = m; j > 0; j--) { // reverse to choose element only once
                 if (j >= size) dp[j] = Math.max(dp[j], dp[j - size] + size);
             }
         }
+        System.out.println(Arrays.toString(dp));
+        return dp[m];
+    }
+
+    public int backPack2(int m, int[] A) { // each item has an infinite number available
+        int[] dp = new int[m + 1];
+        for (int size : A) {
+            for (int j = 1; j <= m; j++) {
+                if (j >= size) dp[j] = Math.max(dp[j], dp[j - size] + size);
+            }
+        }
+        System.out.println(Arrays.toString(dp));
         return dp[m];
     }
 
@@ -120,7 +134,7 @@ public class BackPack {
     /**
      * Given an integer array nums with all positive numbers and no duplicates, find the number of possible combinations
      * that add up to a positive integer target.
-     *
+     * <p>
      * The different sequences are counted as different combinations.
      *
      * @param nums
@@ -128,6 +142,7 @@ public class BackPack {
      *
      * @return
      */
+    // like to coinChange...
     public int backPackVI(int[] nums, int target) {
         int[] dp = new int[target + 1];
         dp[0] = 1;
@@ -144,5 +159,7 @@ public class BackPack {
         BackPack bp = new BackPack();
         System.out.println(bp.backPack(11, A));
         System.out.println(bp.backPack(12, A));
+        System.out.println(bp.backPack2(11, A));
+        System.out.println(bp.backPack2(12, A));
     }
 }
