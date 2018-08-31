@@ -65,13 +65,12 @@ public class LetterCombinationsofaPhoneNumber {
         if (digits == null || digits.length() == 0) {
             return res;
         }
-        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        String[] mapping = new String[]{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         res.add("");
         for (int i = 0; i < digits.length(); i++) {
-            int num = digits.charAt(i) - '0';
             while (res.peek().length() == i) {
                 String t = res.remove();
-                for (char s : mapping[num].toCharArray()) {
+                for (char s : mapping[digits.charAt(i) - '0'].toCharArray()) {
                     res.add(t + s);
                 }
             }
