@@ -19,6 +19,7 @@ public class CombinationSumIII {
             return;
         }
         // PS N - K + 1 HUGE OPTIMIZATION HERE...
+        // end search when its not possible to have any combination
         for (int i = start; i <= this.NUMBER - k + 1; i++) {
             element.add(i);
             recurHelper(result, element, i + 1, n - i, k - 1);
@@ -27,7 +28,7 @@ public class CombinationSumIII {
     }
 
     public static void main(String[] args) {
-        int k = 3, n = 9;
+        int k = 3, n = 18;
         CombinationSumIII cs = new CombinationSumIII();
         System.out.println(cs.combinationSum3(k, n));
     }
