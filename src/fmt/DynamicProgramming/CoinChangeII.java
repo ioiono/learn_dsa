@@ -28,5 +28,6 @@ public class CoinChangeII {
     public static void main(String[] args) {
         CoinChangeII cc = new CoinChangeII();
         System.out.println(cc.change(5, new int[]{1, 2, 5}));
+        System.out.println(cc.change(4, new int[]{1, 2, 3}));
     }
 }

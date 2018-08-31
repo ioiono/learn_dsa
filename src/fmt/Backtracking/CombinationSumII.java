@@ -18,11 +18,19 @@ public class CombinationSumII {
         else if (remain == 0) list.add(new ArrayList<>(tempList));
         else {
             for (int i = start; i < nums.length; i++) {
+                if (nums[i] > remain) break; // optimization here
+
                 if (i > start && nums[i] == nums[i - 1]) continue; // skip duplicates
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums, remain - nums[i], i + 1);
                 tempList.remove(tempList.size() - 1);
             }
         }
+    }
+
+    public static void main(String[] args) {
+        int[] ints = new int[]{10, 1, 2, 7, 6, 1, 5};
+        int target = 8;
+        System.out.println(new CombinationSumII().combinationSum2(ints, target));
     }
 }

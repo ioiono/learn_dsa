@@ -73,7 +73,8 @@ public class Combinations {
 
     public static void main(String[] args) {
         int n = 5;
-        int k = 5;
+        int k = 3;
+        // C(k, n)
         System.out.println(new Combinations().combine(n, k));
         System.out.println(new Combinations().combineII(n, k));
     }
