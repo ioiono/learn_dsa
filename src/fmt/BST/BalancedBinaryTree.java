@@ -13,13 +13,13 @@ public class BalancedBinaryTree {
     // O(N)
     public boolean isBalancedII(TreeNode root) {
         if (root == null) return true;
-        return helper(root) != -1;
+        return height(root) != -1;
     }
 
-    public int helper(TreeNode root) {
+    public int height(TreeNode root) {
         if (root == null) return 0;
-        int l = helper(root.left);
-        int r = helper(root.right);
+        int l = height(root.left);
+        int r = height(root.right);
         if (l == -1 || r == -1 || Math.abs(l - r) > 1) {
             return -1;
         }
