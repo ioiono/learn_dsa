@@ -30,6 +30,20 @@ public class BestTimetoBuyandSellStock {
         return maxprofit;
     }
 
+
+
+    public int maxProfitDP(int[] prices) {
+        if (prices == null || prices.length == 0) return 0;
+        int[] dp = new int[prices.length]; // max profit up to ith day
+        int min = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            min = Math.min(min, prices[i]);
+            dp[i] = Math.max(dp[i - 1], prices[i] - min);
+        }
+
+        return dp[prices.length - 1];
+    }
+    // 降维...
     // T: O(N)  S: O(1)
     public int maxProfitII(int prices[]) {
         int minPrice = Integer.MAX_VALUE;
@@ -42,6 +56,8 @@ public class BestTimetoBuyandSellStock {
     }
 
     public static void main(String[] args) {
-
+        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+        BestTimetoBuyandSellStock bs = new BestTimetoBuyandSellStock();
+        System.out.println(bs.maxProfitDP(prices));
     }
 }
