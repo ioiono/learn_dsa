@@ -55,9 +55,29 @@ public class BestTimetoBuyandSellStock {
         return maxProfit;
     }
 
+    // reduce to maximum subarray
+    private int maxSubArray4(int[] nums) {
+        int max = nums[0];
+        int dp = 0;
+        for (int num : nums) {
+            dp = Math.max(num, dp + num);
+            max = Math.max(max, dp);
+        }
+        return max;
+    }
+
+    public int maxProfit2(int[] nums) {
+        int[] gains = new int[nums.length - 1];
+        for (int i = 0; i < nums.length -1; i++) {
+            gains[i] = nums[i + 1] - nums[i];
+        }
+        return Math.max(maxSubArray4(gains), 0);
+    }
+
     public static void main(String[] args) {
         int[] prices = new int[]{7, 1, 5, 3, 6, 4};
         BestTimetoBuyandSellStock bs = new BestTimetoBuyandSellStock();
         System.out.println(bs.maxProfitDP(prices));
+        System.out.println(bs.maxProfit2(prices));
     }
 }
