@@ -27,9 +27,23 @@ public class FindMinimuminRotatedSortedArray {
         return nums[lo];
     }
 
+
+    public int findMinIII(int[] nums) {
+        int min = nums[0];
+        for (int i = 0; i < nums.length; i++) {
+            if ((i < nums.length - 1) && nums[i] > nums[i + 1]) {
+                min = nums[i + 1];
+                break;
+            }
+        }
+        return min;
+    }
+
+
     public static void main(String[] args) {
         int[] ints = new int[]{3, 1, 2};
         System.out.println(new FindMinimuminRotatedSortedArray().findMin(ints));
         System.out.println(new FindMinimuminRotatedSortedArray().findMinII(ints));
+        System.out.println(new FindMinimuminRotatedSortedArray().findMinIII(ints));
     }
 }
