@@ -29,14 +29,12 @@ public class FindMinimuminRotatedSortedArray {
 
 
     public int findMinIII(int[] nums) {
-        int min = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if ((i < nums.length - 1) && nums[i] > nums[i + 1]) {
-                min = nums[i + 1];
-                break;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] > nums[i + 1]) {
+                return nums[i + 1];
             }
         }
-        return min;
+        return nums[0];
     }
 
 
