@@ -52,7 +52,7 @@ public class Permutation {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3,};
+        int[] nums = new int[]{1, 2, 3};
         Permutation p = new Permutation();
         System.out.println(p.permute(nums));
         System.out.println(p.permute2(nums));

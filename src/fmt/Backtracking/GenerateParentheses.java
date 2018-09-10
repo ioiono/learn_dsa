@@ -33,8 +33,10 @@ public class GenerateParentheses {
         return res;
     }
 
-    public static void helper(List<String> res, String s, int left, int right) {
-
+    public void helper(List<String> res, String s, int left, int right) {
+        if (left > right) {
+            return;
+        }
         if (left == 0 && right == 0) {
             res.add(s);
             return;
@@ -49,7 +51,7 @@ public class GenerateParentheses {
 
     public static void main(String[] args) {
         GenerateParentheses gp = new GenerateParentheses();
-        System.out.println(gp.generateParenthesis(3));
+        //        System.out.println(gp.generateParenthesis(3));
         System.out.println(gp.generateParenthesis2(3));
     }
 }
