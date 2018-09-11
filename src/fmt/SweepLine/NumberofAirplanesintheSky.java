@@ -52,6 +52,33 @@ public class NumberofAirplanesintheSky {
         }
         return max;
     }
+
+    public int countOfAirplanes3(List<Interval> airplanes) {
+        if (airplanes == null || airplanes.size() == 0) {
+            return 0;
+        }
+        PriorityQueue<Point> queue = new PriorityQueue<>(10,
+                (a, b) -> {
+                    if (a.time == b.time) {
+                        return a.flag - b.flag;
+                    } else {
+                        return a.time - b.time;
+                    }
+                });
+        for (Interval interval : airplanes) {
+            queue.offer(new Point(interval.start, 1));
+            queue.offer(new Point(interval.end, -1));
+        }
+        int count = 0;
+        int max = 0;
+        while (!queue.isEmpty()) {
+            Point p = queue.poll();
+            count += p.flag;
+            max = Math.max(count, max);
+        }
+        return max;
+    }
+
     // Memory Limit Exceeded
     public int countOfAirplanes2(List<Interval> airplanes) {
         if (airplanes == null || airplanes.size() == 0) {
@@ -87,5 +114,6 @@ public class NumberofAirplanesintheSky {
 
         System.out.println(n.countOfAirplanes(list));
         System.out.println(n.countOfAirplanes2(list));
+        System.out.println(n.countOfAirplanes3(list));
     }
 }
