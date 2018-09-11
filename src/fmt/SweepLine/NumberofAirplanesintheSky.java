@@ -59,16 +59,25 @@ public class NumberofAirplanesintheSky {
         }
         PriorityQueue<Point> queue = new PriorityQueue<>(10,
                 (a, b) -> {
-                    if (a.time == b.time) {
+                    if (a.time == b.time) { //order: -1 , 1
                         return a.flag - b.flag;
-                    } else {
+                    } else { // order: 1.00,2.00
                         return a.time - b.time;
                     }
                 });
+
+
         for (Interval interval : airplanes) {
             queue.offer(new Point(interval.start, 1));
             queue.offer(new Point(interval.end, -1));
         }
+
+        Iterator<Point> it = queue.iterator();
+        while (it.hasNext()) {
+            Point cur = it.next();
+            System.out.println("[" + cur.time + ", " + cur.flag + "]");
+        }
+
         int count = 0;
         int max = 0;
         while (!queue.isEmpty()) {
@@ -85,35 +94,37 @@ public class NumberofAirplanesintheSky {
             return 0;
         }
 
-        HashMap<Integer, Integer> hashmap = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         int max = 0;
 
         for (Interval flight : airplanes) {
             int start = flight.start;
             int end = flight.end;
             for (int i = start; i < end; i++) {
-                if (hashmap.containsKey(i)) {
-                    hashmap.put(i, hashmap.get(i) + 1);
+                if (map.containsKey(i)) {
+                    map.put(i, map.get(i) + 1);
                 } else {
-                    hashmap.put(i, 1);
+                    map.put(i, 1);
                 }
-                max = Math.max(max, hashmap.get(i));
+                max = Math.max(max, map.get(i));
             }
         }
         return max;
     }
 
     public static void main(String[] args) {
-        Interval i0 = new Interval(2, 3);
-        Interval i1 = new Interval(1, 10);
-        Interval i2 = new Interval(5, 8);
-        Interval i3 = new Interval(4, 7);
-
+        Interval i0 = new Interval(1, 10);
+        Interval i1 = new Interval(10, 20);
+        Interval i2 = new Interval(20, 30);
+        Interval i3 = new Interval(30, 40);
+        //(1,10),(10,20),(20,30),(30,40)
         List<Interval> list = new ArrayList<>(Arrays.asList(i0, i1, i2, i3));
         NumberofAirplanesintheSky n = new NumberofAirplanesintheSky();
 
-        System.out.println(n.countOfAirplanes(list));
-        System.out.println(n.countOfAirplanes2(list));
+        //        System.out.println(n.countOfAirplanes(list));
+        //        System.out.println(n.countOfAirplanes2(list));
         System.out.println(n.countOfAirplanes3(list));
+
+
     }
 }

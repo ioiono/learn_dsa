@@ -34,7 +34,7 @@ public class BS {
     }
 
     public static void main(String[] args) {
-        int[] ints = new int[]{1, 3, 4, 5, 8, 9, 12};
+        int[] ints = new int[]{1, 3, 4, 5, 8, 9, 9, 9, 12};
         System.out.println(new BS().search(ints, 9));
         System.out.println(new BS().searchRec(ints, 9));
     }
