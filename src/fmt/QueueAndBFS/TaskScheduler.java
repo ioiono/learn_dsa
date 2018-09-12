@@ -30,9 +30,9 @@ public class TaskScheduler {
             c[t - 'A']++;
         }
         Arrays.sort(c);
+        System.out.println(Arrays.toString(c));
         int i = 25;
         while (i >= 0 && c[i] == c[25]) i--;
-
         return Math.max(tasks.length, (c[25] - 1) * (n + 1) + 25 - i);
     }
 
@@ -79,6 +79,8 @@ public class TaskScheduler {
     }
 
     public static void main(String[] args) {
-
+        char[] tasks = new char[]{'A', 'A', 'A', 'B', 'B', 'B'};
+        TaskScheduler ts = new TaskScheduler();
+        System.out.println(ts.leastInterval(tasks, 2));
     }
 }
