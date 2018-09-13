@@ -18,18 +18,17 @@ class Interval {
         start = s;
         end = e;
     }
+
+    @Override
+    public String toString() {
+        return "[" + this.start + ", " + this.end + "]";
+    }
 }
 
 public class MergeIntervals {
-    private class IntervalComparator implements Comparator<Interval> {
-        @Override
-        public int compare(Interval a, Interval b) {
-            return Integer.compare(a.start, b.start);
-        }
-    }
 
     public List<Interval> merge(List<Interval> intervals) {
-        intervals.sort(new IntervalComparator());
+        intervals.sort(Comparator.comparingInt(a -> a.start));
 
         LinkedList<Interval> merged = new LinkedList<>();
         for (Interval interval : intervals) {
