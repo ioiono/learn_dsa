@@ -51,8 +51,10 @@ public class MergeTwoSortedLists {
         head2.next.next.next.next = new ListNode(6);
         head2.next.next.next.next.next = new ListNode(8);
 
-        ListNode newHead = new MergeTwoSortedLists().mergeTwoListsRec(head, head2);
+        //        ListNode newHead = new MergeTwoSortedLists().mergeTwoListsRec(head, head2);
+        ListNode newHead2 = new MergeTwoSortedLists().mergeTwoLists(head, head2);
 
-        LLUtils.printLL(newHead);
+        //        LLUtils.printLL(newHead);
+        LLUtils.printLL(newHead2);
     }
 }
