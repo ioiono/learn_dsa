@@ -38,7 +38,7 @@ public class SortColors {
                 swap(nums, index++, left++);
             } else if (nums[index] == 1) {
                 index++;
-            } else {
+            } else { // ps index does not move
                 swap(nums, index, right--);
             }
         }
