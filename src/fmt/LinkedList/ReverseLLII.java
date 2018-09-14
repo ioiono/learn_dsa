@@ -1,5 +1,7 @@
 package fmt.LinkedList;
 
+import javax.swing.text.Utilities;
+
 public class ReverseLLII {
     /**
      * For example:
@@ -28,7 +30,12 @@ public class ReverseLLII {
             cur.next = temp.next;
             temp.next = pre.next;
             pre.next = temp;
+
+            LLUtils.printLL();
         }
         return dummy.next;
+    }
+
+    public static void main(String[] args) {
     }
 }

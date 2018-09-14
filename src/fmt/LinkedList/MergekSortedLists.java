@@ -55,6 +55,7 @@ public class MergekSortedLists {
     }
 
     // NlgK
+    // clean code
     public ListNode mergeKLists3(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
         PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, Comparator.comparingInt(a -> a.val));
