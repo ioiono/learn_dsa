@@ -31,7 +31,6 @@ public class ReverseLLII {
             temp.next = pre.next;
             pre.next = temp;
 
-            LLUtils.printLL();
         }
         return dummy.next;
     }

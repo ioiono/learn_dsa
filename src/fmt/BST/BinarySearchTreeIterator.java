@@ -65,7 +65,7 @@ public class BinarySearchTreeIterator {
     public static void main(String[] args) {
         BSTIterator i = new BSTIterator(new TreeNode(1));
         while (i.hasNext()) {
-
+            System.out.println(i.next());
         }
     }
 }
