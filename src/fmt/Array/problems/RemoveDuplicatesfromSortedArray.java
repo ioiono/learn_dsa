@@ -23,6 +23,15 @@ public class RemoveDuplicatesfromSortedArray {
         return i + 1;
     }
 
+    private static int removeDuplicates3(int[] nums) {
+        int i = 0;
+        for (int n : nums)
+            if (i < 1 || n > nums[i - 1])
+                nums[i++] = n;
+        return i;
+    }
+
+
     public static void main(String[] args) {
         int[] ints = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         int len = removeDuplicates(ints);
