@@ -5,16 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
-
 public class BTInorder {
     private List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();

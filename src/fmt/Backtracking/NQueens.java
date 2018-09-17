@@ -3,7 +3,7 @@ package fmt.Backtracking;
 import java.util.*;
 
 public class NQueens {
-    private static int n = 10;
+    private static int n = 8;
     private static int count = 0;
 
     public static void main(String[] args) {
@@ -13,20 +13,20 @@ public class NQueens {
         long toc = System.currentTimeMillis();
         System.out.println("Total solutions: " + count);
         System.out.println("Elapsed time: " + (toc - tic) + " ms");
-
+        System.out.println(Integer.toBinaryString(1 << 2 - 1));
         System.out.println("==============================================");
-
-        NQueens nQueens = new NQueens();
-        long tic0 = System.currentTimeMillis();
-        System.out.println(nQueens.solveNQueens(n).size());
-        long toc0 = System.currentTimeMillis();
-        System.out.println("Elapsed time: " + (toc0 - tic0) + " ms");
-        System.out.println("==============================================");
-
-        long tic1 = System.currentTimeMillis();
-        System.out.println(nQueens.solveNQueens2(n).size());
-        long toc1 = System.currentTimeMillis();
-        System.out.println("Elapsed time: " + (toc1 - tic1) + " ms");
+        //
+        //        NQueens nQueens = new NQueens();
+        //        long tic0 = System.currentTimeMillis();
+        //        System.out.println(nQueens.solveNQueens(n).size());
+        //        long toc0 = System.currentTimeMillis();
+        //        System.out.println("Elapsed time: " + (toc0 - tic0) + " ms");
+        //        System.out.println("==============================================");
+        //
+        //        long tic1 = System.currentTimeMillis();
+        //        System.out.println(nQueens.solveNQueens2(n).size());
+        //        long toc1 = System.currentTimeMillis();
+        //        System.out.println("Elapsed time: " + (toc1 - tic1) + " ms");
 
     }
 
