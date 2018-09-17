@@ -170,7 +170,7 @@ public class MajorityElement {
             int mask = 1 << i;
             int cnt = 0;
             for (final int num : nums) {
-                if ((num & mask)!=0 && (++cnt > n / 2)) {
+                if ((num & mask) != 0 && (++cnt > n / 2)) {
                     res |= mask;
                     break;
                 }
