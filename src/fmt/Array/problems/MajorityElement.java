@@ -13,7 +13,8 @@ public class MajorityElement {
         int count = 0;
         int candidate = nums[0];
 
-        for (int num : nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
             if (count == 0) {
                 candidate = num;
             }
@@ -180,7 +181,7 @@ public class MajorityElement {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 2, 1, 1, 1, 2, 2};
+        int[] nums = new int[]{2, 1, 1, 2, 1, 2, 2};
         MajorityElement me = new MajorityElement();
         System.out.println(me.majorityElement(nums));
         System.out.println(me.majorityElement2(nums));
