@@ -21,7 +21,7 @@ public class CourseScheduleII {
 
         Stack<Integer> stack = new Stack<>();
         for (int v = 0; v < numCourses; v++) {
-            if (!marked[v] && dfs(marked, onStack, graph, v, stack)) {
+            if (dfs(marked, onStack, graph, v, stack)) {
                 return new int[0];
             }
         }
@@ -30,13 +30,13 @@ public class CourseScheduleII {
         for (int i = 0; i < numCourses; i++) orderArray[i] = stack.pop();
         return orderArray;
     }
-
+    // has cycle?
     private boolean dfs(boolean[] marked,
                         boolean[] onStack,
                         ArrayList<ArrayList<Integer>> graph,
                         int v,
                         Stack<Integer> list) {
-
+        if(marked[v]) return false;
         onStack[v] = true;
         marked[v] = true;
 
