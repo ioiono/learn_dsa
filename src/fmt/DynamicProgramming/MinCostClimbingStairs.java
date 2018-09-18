@@ -3,6 +3,7 @@ package fmt.DynamicProgramming;
 public class MinCostClimbingStairs {
     // f[i] = cost[i] + min(f[i-1], f[i-2])
     public int minCostClimbingStairs(int[] cost) {
+        // dp[i] : min cost before leaving i
         int n = cost.length;
         int[] dp = new int[n];
         dp[0] = cost[0];
@@ -23,6 +24,17 @@ public class MinCostClimbingStairs {
         }
 
         return Math.min(dp2, dp1);
+    }
+
+    public int minCostClimbingStairsDP2(int[] costs) {
+        int dp1 = 0;
+        int dp2 = 0;
+        for (int i = 2; i <= costs.length; i++) {
+            int dp = Math.min(dp1 + costs[i - 1], dp2 + costs[i - 2]);
+            dp2 = dp1;
+            dp1 = dp;
+        }
+        return dp1;
     }
 
     // emmm

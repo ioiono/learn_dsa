@@ -3,7 +3,7 @@ package fmt.DynamicProgramming;
 public class ClimbingStairs {
     public int climbStairs(int n) {
         int f = 0; // first
-        int g = 1; //second
+        int g = 1; // second
         while (n-- > 0) {
             g = f + g; // third
             f = g - f; // second
