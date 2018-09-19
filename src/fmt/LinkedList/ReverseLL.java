@@ -15,7 +15,7 @@ public class ReverseLL {
     }
 
 
-    public ListNode reverseListII(ListNode head) {
+    public ListNode reverseList2(ListNode head) {
         /* iterative solution */
         ListNode prev = null;
         ListNode curr = head;
@@ -28,11 +28,11 @@ public class ReverseLL {
         return prev;
     }
 
-    public ListNode reverseListIII(ListNode head) {
+    public ListNode reverseList3(ListNode head) {
         if (head == null || head.next == null)
             return head;
         ListNode nextNode = head.next;
-        ListNode newHead = reverseListIII(nextNode);
+        ListNode newHead = reverseList3(nextNode);
         nextNode.next = head;
         head.next = null;
         return newHead;
@@ -58,14 +58,15 @@ public class ReverseLL {
      * This bug could be caught if you test your code with a linked list of size 2.
      *
      * @param head
+     *
      * @return
      */
-    public ListNode reverseListIIII(ListNode head) {
+    public ListNode reverseList4(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
 
-        ListNode root = reverseListIIII(head.next);
+        ListNode root = reverseList4(head.next);
 
         head.next.next = head;
         head.next = null;
@@ -82,7 +83,7 @@ public class ReverseLL {
 
         ReverseLL rev = new ReverseLL();
         LLUtils.printLL(head);
-        LLUtils.printLL(rev.reverseListIIII(head));
+        LLUtils.printLL(rev.reverseList4(head));
 
     }
 }

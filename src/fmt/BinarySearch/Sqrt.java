@@ -31,6 +31,7 @@ public class Sqrt {
      * division flooring).
      *
      * @param x
+     *
      * @return
      */
     int mySqrt2(int x) {
@@ -43,6 +44,21 @@ public class Sqrt {
         return r;
     }
 
+    int sqrt2(int x) {
+        long tmp = (long) x;
+        long l = 0;
+        long r = tmp + 1;
+        while (l < r) {
+            long m = l + (r - l) / 2;
+            if (m * m > tmp) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return (int) (l - 1);
+    }
+
     int sqrt(int x) {
         long r = x;
         while (r * r > x)
@@ -52,8 +68,10 @@ public class Sqrt {
 
 
     public static void main(String[] args) {
-        System.out.println(new Sqrt().mySqrt(8));
-        System.out.println(new Sqrt().mySqrt2(8));
-        System.out.println(new Sqrt().sqrt(8));
+        int n = 2147483647;
+        System.out.println(new Sqrt().mySqrt(n));
+        System.out.println(new Sqrt().mySqrt2(n));
+        System.out.println(new Sqrt().sqrt(n));
+        System.out.println(new Sqrt().sqrt2(n));
     }
 }

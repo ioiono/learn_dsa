@@ -2,6 +2,7 @@ package fmt.BinarySearch;
 
 public class BS {
     public int search(int[] nums, int target) {
+        // [l, r]
         int lo = 0;
         int hi = nums.length - 1;
         while (lo <= hi) {
@@ -15,6 +16,63 @@ public class BS {
             }
         }
         return -1;
+    }
+
+    // lower_bound
+    public int search2(int[] nums, int target) {
+        // [l, r)
+        int l = 0;
+        int r = nums.length;
+
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] == target) {
+                return m;
+            } else if (nums[m] > target) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    // lower_bound
+    public int searchLowerBound(int[] nums, int target) {
+        // [l, r)
+        int l = 0;
+        int r = nums.length;
+
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] >= target) { // find the smallest el that is bigger than or equal to the target
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return l;
+    }
+
+    // upper_bound
+
+    public int searchUpperBound(int[] nums, int target) {
+        // [l, r)
+        int l = 0;
+        int r = nums.length;
+
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] > target) { // find the smallest el that is bigger than the target
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return l;
     }
 
     public int searchRec(int[] nums, int target) {
@@ -34,8 +92,11 @@ public class BS {
     }
 
     public static void main(String[] args) {
-        int[] ints = new int[]{1, 3, 4, 5, 8, 9, 9, 9, 12};
-        System.out.println(new BS().search(ints, 9));
-        System.out.println(new BS().searchRec(ints, 9));
+        int[] ints = new int[]{1, 2, 2, 2, 4, 4, 5, 9, 9, 9, 12};
+        System.out.println(new BS().searchLowerBound(ints, 2));
+        System.out.println(new BS().searchUpperBound(ints, 2));
+        System.out.println(new BS().search(ints, 2));
+        System.out.println(new BS().search2(ints, 2));
+        System.out.println(new BS().searchRec(ints, 2));
     }
 }

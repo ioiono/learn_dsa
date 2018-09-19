@@ -2,6 +2,7 @@ package fmt.QueueAndBFS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class CourseScheduleII {
@@ -25,28 +26,28 @@ public class CourseScheduleII {
                 return new int[0];
             }
         }
-        if (stack.size() < numCourses) return new int[0];
         int[] orderArray = new int[graph.size()];
-        for (int i = 0; i < numCourses; i++) orderArray[i] = stack.pop();
+        for (int i = 0; !stack.isEmpty(); i++) orderArray[i] = stack.pop();
         return orderArray;
     }
+
     // has cycle?
     private boolean dfs(boolean[] marked,
                         boolean[] onStack,
                         ArrayList<ArrayList<Integer>> graph,
                         int v,
                         Stack<Integer> list) {
-        if(marked[v]) return false;
+        if (marked[v]) return false;
+
         onStack[v] = true;
         marked[v] = true;
 
         for (int w : graph.get(v)) {
             // found new vertex, so recur
             if (!marked[w]) {
-                dfs(marked, onStack, graph, w, list);
-            }
-            // has directed cycle
-            else if (onStack[w]) {
+                if (dfs(marked, onStack, graph, w, list))
+                    return true;
+            } else if (onStack[w]) {   // has directed cycle
                 return true;
             }
         }
@@ -56,10 +57,10 @@ public class CourseScheduleII {
     }
 
     public static void main(String[] args) {
-        int n = 4;
-        int[][] p = new int[][]{{1, 0}, {2, 0}, {3, 1}, {3, 2}};
-        //        int n = 2;
-        //        int[][] p = new int[][]{{0, 1}};
+        //        int n = 4;
+        //        int[][] p = new int[][]{{1, 0}, {2, 0}, {3, 1}, {3, 2}};
+        int n = 2;
+        int[][] p = new int[][]{{0, 1}, {1, 0}};
         CourseScheduleII cs2 = new CourseScheduleII();
         System.out.println(Arrays.toString(cs2.findOrder(n, p)));
     }
