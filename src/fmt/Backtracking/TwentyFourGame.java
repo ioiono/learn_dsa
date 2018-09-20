@@ -36,7 +36,6 @@ public class TwentyFourGame {
 
     private String getFormula(Stack<Op> opStack) {
 
-
         Op one = opStack.pop();
         Op two = opStack.pop();
         Op three = opStack.pop();
@@ -60,13 +59,41 @@ public class TwentyFourGame {
         return s;
     }
 
+    private String buildF(Op op) {
+        return op.left + " " + op.op + " " + op.right;
+    }
+
+    private String getF(Stack<Op> opStack) {
+
+        List<Op> list = new ArrayList<>(opStack);
+        String s;
+        Op tmp = list.get(0);
+        s = buildF(tmp);
+        s = "(" + s + ")";
+
+        for (int i = 1; i < list.size(); i++) {
+            Op cur = list.get(i);
+            if (Math.abs(tmp.val - list.get(i).right) < eps) {
+                s = cur.left + " " + cur.op + " " + s;
+            } else {
+                s = s + " " + cur.op + "  " + cur.right;
+            }
+            if (i != list.size() - 1) {
+                s = "(" + s + ")";
+            }
+            tmp = list.get(i);
+        }
+        return s;
+    }
+
     boolean dfs(List<Double> list) {
         if (list.size() == 0) return false;
         if (list.size() == 1) {
-
-            if (Math.abs(list.get(0) - 24.0) < eps) {
-                System.out.println("FORMULA: " + getFormula(opStack));
-            }
+            //
+            //            if (Math.abs(list.get(0) - 24.0) < eps) {
+            //                System.out.println(getF(opStack));
+            //                System.out.println("FORMULA: " + getFormula(opStack));
+            //            }
 
             return Math.abs(list.get(0) - 24.0) < eps;
         }
@@ -166,9 +193,20 @@ public class TwentyFourGame {
         int[] nums2 = new int[]{4, 1, 8, 7};
         TwentyFourGame t = new TwentyFourGame();
         System.out.println(Arrays.toString(nums0));
+        long tic = System.currentTimeMillis();
         System.out.println(t.judgePoint24(nums0));
+
+        long toc = System.currentTimeMillis();
+        System.out.println("Elapsed time: " + (toc - tic) + " ms");
+
+        System.out.println("FORMULA: " + t.getF(t.opStack));
+        System.out.println("FORMULA: " + t.getFormula(t.opStack));
+
+
         System.out.println(Arrays.toString(nums2));
         System.out.println(t.judgePoint24(nums2));
+        System.out.println("FORMULA: " + t.getF(t.opStack));
+        System.out.println("FORMULA: " + t.getFormula(t.opStack));
         System.out.println(t.judgePoint24(new int[]{1, 2, 3, 4}));
         //                System.out.println(t.judgePoint24(nums1));
         //        System.out.println(t.judgePoint242(nums0));
