@@ -100,7 +100,8 @@ public class TwentyFourGame {
         for (int num : nums) {
             list.add((double) num);
         }
-        return dfs2(list);
+        return dfs(list);
+//        return dfs2(list);
     }
 
 
