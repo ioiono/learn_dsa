@@ -18,7 +18,6 @@ public class BS {
         return -1;
     }
 
-    // lower_bound
     public int search2(int[] nums, int target) {
         // [l, r)
         int l = 0;
@@ -34,7 +33,12 @@ public class BS {
                 l = m + 1;
             }
         }
-
+        System.out.println("Left:" + l);
+        System.out.println("Right:" + r);
+        if (l != nums.length && nums[l] == target) {
+            System.out.println("WTF");
+            System.out.println(l);
+        }
         return -1;
     }
 
@@ -93,10 +97,14 @@ public class BS {
 
     public static void main(String[] args) {
         int[] ints = new int[]{1, 2, 2, 2, 4, 4, 5, 9, 9, 9, 12};
-        System.out.println(new BS().searchLowerBound(ints, 2));
-        System.out.println(new BS().searchUpperBound(ints, 2));
-        System.out.println(new BS().search(ints, 2));
-        System.out.println(new BS().search2(ints, 2));
-        System.out.println(new BS().searchRec(ints, 2));
+        //        System.out.println(new BS().searchLowerBound(ints, 2));
+        //        System.out.println(new BS().searchUpperBound(ints, 2));
+        //        System.out.println(new BS().search(ints, 2));
+        for (int num : ints) {
+            System.out.println(new BS().search2(ints, num));
+        }
+        System.out.println(new BS().search2(ints, -1));
+        System.out.println(new BS().search2(ints, 9));
+        //        System.out.println(new BS().searchRec(ints, 2));
     }
 }

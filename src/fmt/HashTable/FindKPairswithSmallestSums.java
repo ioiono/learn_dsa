@@ -41,7 +41,7 @@ class Tuple implements Comparable<Tuple> {
 public class FindKPairswithSmallestSums {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         PriorityQueue<Tuple> pq = new PriorityQueue<>();
-        List<int[]> res = new ArrayList<int[]>();
+        List<int[]> res = new ArrayList<>();
 
         if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0 || k <= 0) return res;
         int m = nums1.length, n = nums2.length;
