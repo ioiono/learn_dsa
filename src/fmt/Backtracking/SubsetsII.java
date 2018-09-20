@@ -22,4 +22,9 @@ public class SubsetsII {
         }
     }
 
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 2, 2, 4};
+        System.out.println(new SubsetsII().subsetsWithDup(nums));
+    }
+
 }

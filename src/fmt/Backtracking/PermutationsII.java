@@ -50,6 +50,7 @@ public class PermutationsII {
     public static void main(String[] args) {
         PermutationsII p = new PermutationsII();
         System.out.println(p.permuteUnique(new int[]{1, 2, 3, 3}));
+        System.out.println(p.permuteUnique(new int[]{3, 3, 8, 8}));
     }
 
 }

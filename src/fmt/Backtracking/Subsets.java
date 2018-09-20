@@ -12,9 +12,9 @@ public class Subsets {
         return list;
     }
 
-    private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
         list.add(new ArrayList<>(tempList));
-        for(int i = start; i < nums.length; i++){
+        for (int i = start; i < nums.length; i++) {
             tempList.add(nums[i]);
             backtrack(list, tempList, nums, i + 1);
             tempList.remove(tempList.size() - 1);
@@ -23,6 +23,6 @@ public class Subsets {
 
     public static void main(String[] args) {
         Subsets ss = new Subsets();
-        System.out.println(ss.subsets(new int[]{1,2,2}));
+        System.out.println(ss.subsets(new int[]{1, 2, 2, 4}));
     }
 }
