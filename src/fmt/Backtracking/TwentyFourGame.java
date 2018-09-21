@@ -241,6 +241,7 @@ public class TwentyFourGame {
         List<int[]> list = new ArrayList<>(Arrays.asList(
                 new int[]{3, 3, 8, 8},
                 new int[]{9, 4, 8, 4},
+                new int[]{1, 2, 3, 4},
                 new int[]{4, 1, 8, 7},
                 new int[]{3, 9, 4, 8},
                 new int[]{2, 14, 8, 4}
