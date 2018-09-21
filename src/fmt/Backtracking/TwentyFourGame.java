@@ -1,9 +1,6 @@
 package fmt.Backtracking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 class Op {
     String op;
@@ -53,7 +50,7 @@ public class TwentyFourGame {
         if (Math.abs(two.val - one.right) < eps) {
             s = one.left + " " + one.op + " " + s;
         } else {
-            s = s + " " + one.op + "  " + one.right;
+            s = s + " " + one.op + " " + one.right;
         }
 
         return s;
@@ -63,8 +60,11 @@ public class TwentyFourGame {
         return op.left + " " + op.op + " " + op.right;
     }
 
-    private String getF(Stack<Op> opStack) {
+    private String build(Op op) {
+        return "(" + op.left + " " + op.op + " " + op.right + ")";
+    }
 
+    private String getF(Stack<Op> opStack) {
         List<Op> list = new ArrayList<>(opStack);
         String s;
         Op tmp = list.get(0);
@@ -84,6 +84,52 @@ public class TwentyFourGame {
             tmp = list.get(i);
         }
         return s;
+    }
+
+    private String getF2(Stack<Op> opStack) {
+        List<Op> list = new ArrayList<>(opStack);
+        String s;
+
+        List<Op> inits = new ArrayList<>();
+
+        Op first = list.get(0);
+        s = build(first);
+
+        inits.add(first);
+        list.remove(first);
+
+        for (int i = 0; i < list.size(); i++) {
+
+            Op cur = list.get(i);
+            Op l = helper(inits, cur.left);
+            Op r = helper(inits, cur.right);
+            if (l != null && r != null) {
+                s = build(l) + " " + cur.op + " " + build(r);
+            } else if (r != null) {
+                s = cur.left + " " + cur.op + " " + s;
+                s = "(" + s + ")";
+            } else if (l != null) {
+                s = s + " " + cur.op + " " + cur.right;
+                s = "(" + s + ")";
+            } else {
+
+            }
+            inits.add(cur);
+
+        }
+
+        return s;
+    }
+
+
+    private Op helper(List<Op> list, double val) {
+        for (Op op : list) {
+            if (Math.abs(val - op.val) < eps) {
+                list.remove(op);
+                return op;
+            }
+        }
+        return null;
     }
 
     boolean dfs(List<Double> list) {
@@ -189,8 +235,18 @@ public class TwentyFourGame {
 
     public static void main(String[] args) {
         int[] nums0 = new int[]{3, 3, 8, 8};
-        int[] nums1 = new int[]{1, 2, 1, 2};
+        int[] nums1 = new int[]{9, 4, 8, 4};
         int[] nums2 = new int[]{4, 1, 8, 7};
+
+        List<int[]> list = new ArrayList<>(Arrays.asList(
+                new int[]{3, 3, 8, 8},
+                new int[]{9, 4, 8, 4},
+                new int[]{4, 1, 8, 7},
+                new int[]{3, 9, 4, 8},
+                new int[]{2, 14, 8, 4}
+        ));
+
+
         TwentyFourGame t = new TwentyFourGame();
         System.out.println(Arrays.toString(nums0));
         long tic = System.currentTimeMillis();
@@ -202,12 +258,19 @@ public class TwentyFourGame {
         System.out.println("FORMULA: " + t.getF(t.opStack));
         System.out.println("FORMULA: " + t.getFormula(t.opStack));
 
+        System.out.println("===========================================");
 
-        System.out.println(Arrays.toString(nums2));
-        System.out.println(t.judgePoint24(nums2));
-        System.out.println("FORMULA: " + t.getF(t.opStack));
-        System.out.println("FORMULA: " + t.getFormula(t.opStack));
-        System.out.println(t.judgePoint24(new int[]{1, 2, 3, 4}));
+        for (int[] nums : list) {
+            System.out.println(t.judgePoint24(nums));
+            System.out.println("Numbers: " + Arrays.toString(nums));
+            System.out.println(t.opStack);
+//            System.out.println("FORMULA: " + t.getF(t.opStack));
+            System.out.println("FORMULA: " + t.getF2(t.opStack));
+//            System.out.println("FORMULA: " + t.getFormula(t.opStack));
+            System.out.println("===========================================");
+        }
+
+        //        System.out.println(t.judgePoint24(new int[]{1, 2, 3, 4}));
         //                System.out.println(t.judgePoint24(nums1));
         //        System.out.println(t.judgePoint242(nums0));
         //        System.out.println(t.judgePoint242(nums1));
