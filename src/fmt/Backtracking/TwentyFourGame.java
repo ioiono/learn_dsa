@@ -87,6 +87,9 @@ public class TwentyFourGame {
     }
 
     private String getF2(Stack<Op> opStack) {
+        if (opStack.isEmpty()) {
+            return "Empty Stack!";
+        }
         List<Op> list = new ArrayList<>(opStack);
         String s;
 
@@ -243,6 +246,7 @@ public class TwentyFourGame {
                 new int[]{9, 4, 8, 4},
                 new int[]{1, 2, 3, 4},
                 new int[]{4, 1, 8, 7},
+                new int[]{100, 2, 20, 80},
                 new int[]{3, 9, 4, 8},
                 new int[]{2, 14, 8, 4}
         ));
@@ -265,9 +269,9 @@ public class TwentyFourGame {
             System.out.println(t.judgePoint24(nums));
             System.out.println("Numbers: " + Arrays.toString(nums));
             System.out.println(t.opStack);
-//            System.out.println("FORMULA: " + t.getF(t.opStack));
+            //            System.out.println("FORMULA: " + t.getF(t.opStack));
             System.out.println("FORMULA: " + t.getF2(t.opStack));
-//            System.out.println("FORMULA: " + t.getFormula(t.opStack));
+            //            System.out.println("FORMULA: " + t.getFormula(t.opStack));
             System.out.println("===========================================");
         }
 
