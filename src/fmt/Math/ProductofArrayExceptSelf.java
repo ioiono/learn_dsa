@@ -11,7 +11,7 @@ import java.util.Arrays;
  * For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was
  * [3, 2, 1], the expected output would be [2, 3, 6].
  */
-public class OtherSum {
+public class ProductofArrayExceptSelf {
     // use division
     public int[] getSumNaive(int[] nums) {
         long pro = 1;
@@ -44,11 +44,12 @@ public class OtherSum {
         int n = nums.length;
         int[] res = new int[n];
         //The first iteration is to multiply the total on the left side of nums[i]
-        //
         //The second iteration is to multiply the total on the right side of nums[i]
-        res[0] = 1;
-        for (int i = 1; i < n; i++) {
-            res[i] = res[i - 1] * nums[i - 1];
+        Arrays.fill(res, 1);
+        int left = 1;
+        for (int i = 0; i < n; i++) {
+            res[i] *= left;
+            left *= nums[i];
         }
         int right = 1;
         for (int i = n - 1; i >= 0; i--) {
@@ -61,12 +62,12 @@ public class OtherSum {
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3, 4, 5};
         int[] nums1 = new int[]{3, 2, 1};
-        OtherSum os = new OtherSum();
+        ProductofArrayExceptSelf os = new ProductofArrayExceptSelf();
 
         System.out.println(Arrays.toString(os.getSumNaive(nums)));
         System.out.println(Arrays.toString(os.getSumNaive(nums1)));
         System.out.println(Arrays.toString(os.getSum(nums)));
         System.out.println(Arrays.toString(os.getSum(nums1)));
-        System.out.println(Arrays.toString(os.productExceptSelf(nums1)));
+        System.out.println(Arrays.toString(os.productExceptSelf(new int[0])));
     }
 }
