@@ -2,7 +2,7 @@ package fmt.BinaryTree;
 
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 public class SerializeandDeserializeBinaryTree {
 
@@ -40,16 +40,15 @@ class Codec {
         return sb.toString();
     }
 
-    private TreeNode helper1(LinkedList<String> list) {
-        if (list.get(0).equals("null")) {
-            list.removeFirst();
+    private TreeNode helper1(Queue<String> nodes) {
+        String val = nodes.poll();
+        if ("null".equals(val)) {
             return null;
         }
 
-        TreeNode root = new TreeNode(Integer.valueOf(list.peekFirst()));
-        list.removeFirst();
-        root.left = helper1(list);
-        root.right = helper1(list);
+        TreeNode root = new TreeNode(Integer.valueOf(val));
+        root.left = helper1(nodes);
+        root.right = helper1(nodes);
 
         return root;
     }
@@ -57,7 +56,7 @@ class Codec {
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         String[] data_array = data.split(",");
-        LinkedList<String> list = new LinkedList<>(Arrays.asList(data_array));
+        Queue<String> list = new LinkedList<>(Arrays.asList(data_array));
         return helper1(list);
     }
 }
