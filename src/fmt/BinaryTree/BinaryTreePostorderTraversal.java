@@ -13,7 +13,7 @@ public class BinaryTreePostorderTraversal {
         stack.push(root);
         while (!stack.isEmpty()) {
             root = stack.pop();
-            res.addFirst(root.val);
+            res.addFirst(root.val); // or add then reverse
             if (root.left != null) stack.push(root.left);
             if (root.right != null) stack.push(root.right);
         }
