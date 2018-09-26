@@ -1,6 +1,5 @@
 package fmt.BinaryTree;
 
-// TODO
 public class LongestUnivaluePath {
     private int res = 0;
 
