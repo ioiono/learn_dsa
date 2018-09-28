@@ -56,7 +56,7 @@ public class HouseRobber {
         int dp2 = 0;
         int dp1 = 0; // dp1 -> after go through first n houses, the max money you can get.
         for (int num : nums) {
-            int dp = Math.max(dp1, dp2 + num);;
+            int dp = Math.max(dp1, dp2 + num);
             dp2 = dp1;
             dp1 = dp;
         }
