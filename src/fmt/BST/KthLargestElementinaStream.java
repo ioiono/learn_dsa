@@ -1,8 +1,6 @@
 package fmt.BST;
 
-import edu.princeton.cs.algs4.In;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 class KthLargest {
