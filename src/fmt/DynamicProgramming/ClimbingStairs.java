@@ -19,23 +19,15 @@ public class ClimbingStairs {
         else return climbStairsRec(n - 1) + climbStairsRec(n - 2);
     }
 
-    public int climbStairsMem(int n) {
-        int memo[] = new int[n + 1];
-        return climb_Stairs(0, n, memo);
+    public int climbStairsMoi(int n) {
+        int mem[] = new int[n + 1];
+        return climb(n, mem);
     }
 
-    public int climb_Stairs(int i, int n, int memo[]) {
-        if (i > n) {
-            return 0;
-        }
-        if (i == n) {
-            return 1;
-        }
-        if (memo[i] > 0) {
-            return memo[i];
-        }
-        memo[i] = climb_Stairs(i + 1, n, memo) + climb_Stairs(i + 2, n, memo);
-        return memo[i];
+    private int climb(int n, int[] mem) {
+        if (n <= 1)      return 1;
+        if (mem[n] != 0) return mem[n];
+        else             return mem[n] = climb(n - 1, mem) + climb(n - 2, mem);
     }
 
     /**
@@ -69,6 +61,6 @@ public class ClimbingStairs {
     public static void main(String[] args) {
         ClimbingStairs cs = new ClimbingStairs();
         System.out.println(cs.climbStairs(44));
-        System.out.println(cs.climbStairsMem(44));
+        System.out.println(cs.climbStairsMoi(44));
     }
 }
