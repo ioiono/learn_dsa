@@ -28,7 +28,8 @@ public class SetInterfaceUsage {
 
 
         //Using JDK 8 Aggregate Operations:
-        Set<String> distinctWords = Arrays.asList(args).stream()
+        Set<String> distinctWords = Arrays.asList(args)
+                                          .stream()
                                           .collect(Collectors.toSet());
         System.out.println(distinctWords.size() +
                 " distinct words: " +

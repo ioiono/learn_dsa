@@ -49,6 +49,7 @@ public class HouseRobber {
         }
         return memo[nums.length];
     }
+
     // clean code XD
     public int rob3(int[] nums) {
         if (nums.length == 0) return 0;
