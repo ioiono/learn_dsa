@@ -54,8 +54,8 @@ public class HouseRobber {
     public int rob3(int[] nums) {
         if (nums.length == 0) return 0;
 
-        int dp2 = 0;
-        int dp1 = 0; // dp1 -> after go through first n houses, the max money you can get.
+        int dp2 = 0; // dp1 -> AFTER go through first n - 1 houses, the max money you can get.
+        int dp1 = 0; // dp1 -> AFTER go through first n houses, the max money you can get.
         for (int num : nums) {
             int dp = Math.max(dp1, dp2 + num);
             dp2 = dp1;
