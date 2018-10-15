@@ -1,9 +1,6 @@
 package fmt.HashTable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
@@ -39,6 +36,7 @@ class Tuple implements Comparable<Tuple> {
 }
 
 public class FindKPairswithSmallestSums {
+    // ~3ms
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         PriorityQueue<Tuple> pq = new PriorityQueue<>();
         List<int[]> res = new ArrayList<>();
