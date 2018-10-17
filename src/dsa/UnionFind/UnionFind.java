@@ -14,6 +14,7 @@ public class UnionFind {
     }
 
     // O(1)
+    // Union by rank: merge low rank tree to high rank one.
     public boolean union(int u, int v) {
         int rootU = find(u);
         int rootV = find(v);
@@ -32,6 +33,7 @@ public class UnionFind {
     }
 
     // O(1)
+    // Path compression: make the tree flat.
     public int find(int u) {
         while (parents[u] != u) {
             parents[u] = parents[parents[u]];
