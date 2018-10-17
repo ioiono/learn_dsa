@@ -1,9 +1,12 @@
 package fmt.UnionFind;
 
+import java.util.HashSet;
+import java.util.Set;
+
 class UF {
     private int[] parents;
     private int[] ranks;
-    private int cnt = 0;
+    private int cnt;
 
     public UF(int n) {
         this.cnt = n;
@@ -58,8 +61,23 @@ public class FriendCircles {
         return uf.count();
     }
 
-    // DFS
     public int findCircleNum2(int[][] M) {
+        int n = M.length;
+        UnionFind uf = new UnionFind(n);
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (M[i][j] == 1) uf.union(i, j);
+            }
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set.add(uf.find(i));
+        }
+        return set.size();
+    }
+
+    // DFS
+    public int findCircleNum3(int[][] M) {
         boolean[] visited = new boolean[M.length];
         int circle = 0;
         for (int i = 0; i < M.length; i++) {
@@ -95,6 +113,10 @@ public class FriendCircles {
         };
         FriendCircles fc = new FriendCircles();
         System.out.println(fc.findCircleNum(M));
+        System.out.println(fc.findCircleNum2(M));
+        System.out.println(fc.findCircleNum3(M));
         System.out.println(fc.findCircleNum(M1));
+        System.out.println(fc.findCircleNum2(M1));
+        System.out.println(fc.findCircleNum3(M1));
     }
 }

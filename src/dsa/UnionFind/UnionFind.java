@@ -13,6 +13,7 @@ public class UnionFind {
         }
     }
 
+    // O(1)
     public boolean union(int u, int v) {
         int rootU = find(u);
         int rootV = find(v);
@@ -30,6 +31,7 @@ public class UnionFind {
         return true;
     }
 
+    // O(1)
     public int find(int u) {
         while (parents[u] != u) {
             parents[u] = parents[parents[u]];
