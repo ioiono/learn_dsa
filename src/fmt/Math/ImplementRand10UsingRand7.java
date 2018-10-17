@@ -15,6 +15,15 @@ public class ImplementRand10UsingRand7 {
         return (index - 1) % 10 + 1;
     }
 
+    // clean code
+    public int rand10_2() {
+        int res = 40;
+        while (res >= 40) {
+            res = 7 * (rand7() - 1) + rand7() - 1;
+        }
+        return res % 10 + 1;
+    }
+
     public static void main(String[] args) {
         System.out.println(new ImplementRand10UsingRand7().rand10());
         System.out.println(new ImplementRand10UsingRand7().rand10());
