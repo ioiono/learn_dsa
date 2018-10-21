@@ -56,6 +56,7 @@ public class Sqrt {
                 l = m + 1;
             }
         }
+        // l: smallest number such that l * l > x
         return (int) (l - 1);
     }
 
