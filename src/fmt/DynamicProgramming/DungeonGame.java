@@ -3,7 +3,7 @@ package fmt.DynamicProgramming;
 import java.util.Arrays;
 
 public class DungeonGame {
-    public int calculateMinimumHP(int[][] dungeon) {
+    public int calculateMinimumHP0(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) return 0;
 
         int m = dungeon.length;
@@ -30,6 +30,32 @@ public class DungeonGame {
         }
         System.out.println(Arrays.deepToString(health));
         return health[0][0];
+    }
+
+    public int calculateMinimumHP1(int[][] dungeon) {
+        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) return 0;
+
+        int m = dungeon.length;
+        int n = dungeon[0].length;
+
+        // hp[j][i]: min hp to reach i, j from bottom right of dungeon.
+        int[][] hp = new int[m + 1][n + 1];
+
+        for (int i = 0; i < m + 1; i++) {
+            for (int j = 0; j < n + 1; j++) {
+                hp[i][j] = Integer.MAX_VALUE;
+            }
+        }
+
+        hp[m][n - 1] = hp[m - 1][n] = 1;
+
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                hp[j][i] = Math.max(1, Math.min(hp[j][i + 1], hp[j + 1][i]) - dungeon[j][i]);
+            }
+        }
+        System.out.println(Arrays.deepToString(hp));
+        return hp[0][0];
     }
 
 
@@ -64,7 +90,8 @@ public class DungeonGame {
                 {10, 30, -5},
         };
         DungeonGame d = new DungeonGame();
-        System.out.println(d.calculateMinimumHP(dungeon));
+        System.out.println(d.calculateMinimumHP0(dungeon));
+        System.out.println(d.calculateMinimumHP1(dungeon));
         System.out.println(d.calculateMinimumHP2(dungeon));
     }
 }
