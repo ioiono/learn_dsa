@@ -55,21 +55,39 @@ import java.util.Map;
 //    }
 //}
 
-class NumArray {
-    private int[] sum;
+//class NumArray {
+//    private int[] sum;
+//
+//    public NumArray(int[] nums) {
+//        sum = new int[nums.length + 1];
+//        for (int i = 0; i < nums.length; i++) {
+//            sum[i + 1] = sum[i] + nums[i];
+//        }
+//    }
+//
+//    public int sumRange(int i, int j) {
+//        return sum[j + 1] - sum[i];
+//    }
+//}
 
+// Oct 27, 2018
+// didn't remember this problem at all, sigh...
+class NumArray {
+    private HashMap<Integer, Integer> map;
     public NumArray(int[] nums) {
-        sum = new int[nums.length + 1];
+        this.map = new HashMap<>();
+        int sum = 0;
         for (int i = 0; i < nums.length; i++) {
-            sum[i + 1] = sum[i] + nums[i];
+            sum += nums[i];
+            map.put(i, sum);
         }
     }
 
     public int sumRange(int i, int j) {
-        return sum[j + 1] - sum[i];
+        if (i == 0) return map.get(j);
+        else return map.get(j) - map.get(i - 1);
     }
 }
-
 public class RangeSumQueryImmutable {
     public static void main(String[] args) {
         NumArray na = new NumArray(new int[]{-2, 0, 3, -5, 2, -1});
