@@ -74,6 +74,7 @@ import java.util.Map;
 // didn't remember this problem at all, sigh...
 class NumArray {
     private HashMap<Integer, Integer> map;
+
     public NumArray(int[] nums) {
         this.map = new HashMap<>();
         int sum = 0;
@@ -88,6 +89,23 @@ class NumArray {
         else return map.get(j) - map.get(i - 1);
     }
 }
+
+// same idea from solutions
+//class NumArray {
+//    int[] nums;
+//
+//    public NumArray(int[] nums) {
+//        for (int i = 1; i < nums.length; i++) {
+//            nums[i] += nums[i - 1];
+//        }
+//        this.nums = nums;
+//    }
+//
+//    public int sumRange(int i, int j) {
+//        return i == 0 ? nums[j] : nums[j] - nums[i - 1];
+//    }
+//}
+
 public class RangeSumQueryImmutable {
     public static void main(String[] args) {
         NumArray na = new NumArray(new int[]{-2, 0, 3, -5, 2, -1});
@@ -96,3 +114,4 @@ public class RangeSumQueryImmutable {
         System.out.println(na.sumRange(0, 5));
     }
 }
+// ulysses://x-callback-url/open?id=5Xn19GC4tB-4ZJGMsfaEVA
