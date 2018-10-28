@@ -51,14 +51,35 @@ public class PartitionEqualSubsetSum {
         if ((sum & 1) == 1) {
             return false;
         }
-        int m = sum / 2;
-        int[] dp = new int[m + 1];
+        int half = sum / 2;
+        int[] dp = new int[half + 1];
         for (int num : nums) {
-            for (int j = m; j > 0; j--) {
+            for (int j = half; j > 0; j--) {
                 if (j >= num) dp[j] = Math.max(dp[j], dp[j - num] + num);
             }
         }
-        return dp[m] * 2 == sum;
+        return dp[half] * 2 == sum;
+    }
+
+    // clean code
+    // Runtime: 19 ms, faster than 66.35%
+    public boolean canPartition2(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if ((sum & 1) == 1) {
+            return false;
+        }
+        int half = sum / 2;
+        boolean[] dp = new boolean[half + 1];
+        dp[0] = true;// true if target sum is 0
+        for (int num : nums) {
+            for (int i = half; i > 0; i--) {
+                if (i >= num) dp[i] = (dp[i] || dp[i - num]);
+            }
+        }
+        return dp[half];
     }
 
 
@@ -86,10 +107,12 @@ public class PartitionEqualSubsetSum {
         int[] nums = new int[]{1, 5, 11, 5};
         int[] nums2 = new int[]{1, 2, 3, 5};
         System.out.println(new PartitionEqualSubsetSum().canPartition(nums));
+        System.out.println(new PartitionEqualSubsetSum().canPartition2(nums));
         System.out.println(new PartitionEqualSubsetSum().canPartition2D(nums));
         System.out.println(new PartitionEqualSubsetSum().canPartitionDFS(nums));
 
         System.out.println(new PartitionEqualSubsetSum().canPartition(nums2));
+        System.out.println(new PartitionEqualSubsetSum().canPartition2(nums2));
         System.out.println(new PartitionEqualSubsetSum().canPartition2D(nums2));
         System.out.println(new PartitionEqualSubsetSum().canPartitionDFS(nums2));
     }
