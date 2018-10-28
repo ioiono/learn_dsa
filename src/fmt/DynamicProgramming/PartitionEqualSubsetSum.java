@@ -42,6 +42,7 @@ public class PartitionEqualSubsetSum {
         return dp[n][sum];
     }
 
+    // clean code
     public boolean canPartition(int[] nums) {
         int sum = 0;
         for (int num : nums) {
