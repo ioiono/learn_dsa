@@ -54,6 +54,10 @@ public class PartitionEqualSubsetSum {
         int half = sum / 2;
         int[] dp = new int[half + 1];
         for (int num : nums) {
+            // or shorter XD.
+            // for (int j = half; j >= num; j--) {
+            //     dp[j] = Math.max(dp[j], dp[j - num] + num);
+            // }
             for (int j = half; j > 0; j--) {
                 if (j >= num) dp[j] = Math.max(dp[j], dp[j - num] + num);
             }
@@ -82,8 +86,50 @@ public class PartitionEqualSubsetSum {
         return dp[half];
     }
 
+    // Runtime: 8 ms, faster than 90.86%
+    public boolean canPartition3(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if ((sum & 1) == 1) {
+            return false;
+        }
+        int half = sum / 2;
+        boolean[] dp = new boolean[sum + 1];
+        dp[0] = true;// true if target sum is 0
+        for (int num : nums) {
+            for (int i = half; i >= 0; i--) {
+                if (dp[i]) dp[i + num] = true;
+            }
+            if (dp[half]) return true;
+        }
+        return false;
+    }
+
+    public boolean canPartition4(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if ((sum & 1) == 1) {
+            return false;
+        }
+        int half = sum / 2;
+        boolean[] dp = new boolean[sum + 1];
+        dp[0] = true;// true if target sum is 0
+        for (int num : nums) {
+            for (int i = half; i >= num; i--) {
+                if (dp[i - num]) dp[i] = true;
+            }
+            if (dp[half]) return true;
+        }
+        return false;
+    }
+
 
     // dfs
+    // Runtime: 7 ms, faster than 92.53%
     public boolean canPartitionDFS(int[] nums) {
         int sum = 0;
         for (int val : nums) {
@@ -108,11 +154,15 @@ public class PartitionEqualSubsetSum {
         int[] nums2 = new int[]{1, 2, 3, 5};
         System.out.println(new PartitionEqualSubsetSum().canPartition(nums));
         System.out.println(new PartitionEqualSubsetSum().canPartition2(nums));
+        System.out.println(new PartitionEqualSubsetSum().canPartition3(nums));
+        System.out.println(new PartitionEqualSubsetSum().canPartition4(nums));
         System.out.println(new PartitionEqualSubsetSum().canPartition2D(nums));
         System.out.println(new PartitionEqualSubsetSum().canPartitionDFS(nums));
 
         System.out.println(new PartitionEqualSubsetSum().canPartition(nums2));
         System.out.println(new PartitionEqualSubsetSum().canPartition2(nums2));
+        System.out.println(new PartitionEqualSubsetSum().canPartition3(nums2));
+        System.out.println(new PartitionEqualSubsetSum().canPartition4(nums2));
         System.out.println(new PartitionEqualSubsetSum().canPartition2D(nums2));
         System.out.println(new PartitionEqualSubsetSum().canPartitionDFS(nums2));
     }
