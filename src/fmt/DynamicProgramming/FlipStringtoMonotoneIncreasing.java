@@ -38,12 +38,12 @@ public class FlipStringtoMonotoneIncreasing {
         for (int i = 0; i < N; ++i)
             dp[i + 1] = dp[i] + (S.charAt(i) == '1' ? 1 : 0);
 
-        int ans = Integer.MAX_VALUE;
+        int res = Integer.MAX_VALUE;
         for (int j = 0; j <= N; ++j) {
-            ans = Math.min(ans, dp[j] + N - j - (dp[N] - dp[j]));
+            res = Math.min(res, dp[j] + N - j - (dp[N] - dp[j]));
         }
 
-        return ans;
+        return res;
     }
 
     public int minFlipsMonoIncr2(String S) {
