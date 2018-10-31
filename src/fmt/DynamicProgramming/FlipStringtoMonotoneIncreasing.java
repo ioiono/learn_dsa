@@ -21,6 +21,17 @@ package fmt.DynamicProgramming;
  * 1 <= S.length <= 20000 S only consists of '0' and '1' characters.
  */
 public class FlipStringtoMonotoneIncreasing {
+    /**
+     * Complexity Analysis
+     * <p>
+     * Time Complexity: O(N)O(N), where NN is the length of S.
+     * <p>
+     * Space Complexity: O(N)O(N).
+     *
+     * @param S
+     *
+     * @return
+     */
     public int minFlipsMonoIncr(String S) {
         int N = S.length();
         int[] dp = new int[N + 1];
@@ -35,8 +46,29 @@ public class FlipStringtoMonotoneIncreasing {
         return ans;
     }
 
+    public int minFlipsMonoIncr2(String S) {
+        if (S == null || S.length() <= 0)
+            return 0;
+
+        char[] sChars = S.toCharArray();
+        int flipCount = 0;
+        int onesCount = 0;
+
+        for (char sChar : sChars) {
+            if (sChar == '0') {
+                if (onesCount == 0) continue;
+                else flipCount++;
+            } else {
+                onesCount++;
+            }
+            flipCount = Math.min(flipCount, onesCount);
+        }
+        return flipCount;
+    }
+
     public static void main(String[] args) {
         FlipStringtoMonotoneIncreasing flip = new FlipStringtoMonotoneIncreasing();
         System.out.println(flip.minFlipsMonoIncr("010110"));
+        System.out.println(flip.minFlipsMonoIncr2("010110"));
     }
 }
