@@ -21,6 +21,23 @@ package fmt.DynamicProgramming;
  * 1 <= S.length <= 20000 S only consists of '0' and '1' characters.
  */
 public class FlipStringtoMonotoneIncreasing {
+    // Brute Force (O(N^2))
+    // TLE
+    // Try all possible ks so that => S[0] ~ S[k] == '0' and S[k+1] ~ S[N] == '1'
+    public int minFlipsMonoIncrBF(String S) {
+        int res = Integer.MAX_VALUE;
+
+        for (int k = -1; k < S.length(); k++) {
+            int cnt = 0;
+            for (int i = 0; i <= k; i++) if (S.charAt(i) == '1') cnt++;
+            for (int i = k + 1; i < S.length(); i++) if (S.charAt(i) == '0') cnt++;
+            res = Math.min(res, cnt);
+        }
+
+        return res;
+    }
+
+
     /**
      * Complexity Analysis
      * <p>
@@ -70,5 +87,7 @@ public class FlipStringtoMonotoneIncreasing {
         FlipStringtoMonotoneIncreasing flip = new FlipStringtoMonotoneIncreasing();
         System.out.println(flip.minFlipsMonoIncr("010110"));
         System.out.println(flip.minFlipsMonoIncr2("010110"));
+        System.out.println(flip.minFlipsMonoIncrBF("11011"));
+        System.out.println(flip.minFlipsMonoIncr2("010110001100"));
     }
 }
