@@ -23,7 +23,16 @@ public class MinCostClimbingStairs {
             dp1 = dp;
         }
 
-        return Math.min(dp2, dp1);
+        return Math.min(dp1, dp2);
+    }
+
+
+    // emmm
+    public int minCostClimbingStairs2(int[] cost) {
+        for (int i = 2; i < cost.length; i++) {
+            cost[i] = Math.min(cost[i - 1], cost[i - 2]) + cost[i];
+        }
+        return Math.min(cost[cost.length - 1], cost[cost.length - 2]);
     }
 
     public int minCostClimbingStairsDP2(int[] costs) {
@@ -35,14 +44,6 @@ public class MinCostClimbingStairs {
             dp1 = dp;
         }
         return dp1;
-    }
-
-    // emmm
-    public int minCostClimbingStairs2(int[] cost) {
-        for (int i = 2; i < cost.length; i++) {
-            cost[i] = Math.min(cost[i - 1], cost[i - 2]) + cost[i];
-        }
-        return Math.min(cost[cost.length - 1], cost[cost.length - 2]);
     }
 
     // dp[n] = min(dp(n-1)+cost[n-1], dp(n-2)+cost[n-2])
