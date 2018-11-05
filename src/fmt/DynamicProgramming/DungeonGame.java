@@ -3,6 +3,7 @@ package fmt.DynamicProgramming;
 import java.util.Arrays;
 
 public class DungeonGame {
+    // clean code
     public int calculateMinimumHP0(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0) {
             return 1;
