@@ -3,7 +3,7 @@ package fmt.DynamicProgramming;
 public class MinCostClimbingStairs {
     // f[i] = cost[i] + min(f[i-1], f[i-2])
     public int minCostClimbingStairs(int[] cost) {
-        // dp[i] : min cost before leaving i
+        // dp[i] : min cost before leaving i-th step, including cost[i] in dp[i]
         int n = cost.length;
         int[] dp = new int[n];
         dp[0] = cost[0];
@@ -45,11 +45,12 @@ public class MinCostClimbingStairs {
         return Math.min(cost[cost.length - 1], cost[cost.length - 2]);
     }
 
-    // dp[n] = min(dp(n-1)+cost[n-1], dp(n-2)+cost[n-2]
-    // return dp[n]
+    // dp[n] = min(dp(n-1)+cost[n-1], dp(n-2)+cost[n-2])
+    // here dp[i] means min cost to climb to i-th step (exactly what the problem asks)
     public int minCostClimbingStairsRec(int[] cost) {
+        int n = cost.length;
         int[] mem = new int[cost.length + 1];
-        return dp(cost.length, cost, mem);
+        return dp(n, cost, mem);
     }
 
     private int dp(int i, int[] cost, int[] mem) {
@@ -69,6 +70,5 @@ public class MinCostClimbingStairs {
         System.out.println(mcs.minCostClimbingStairs(new int[]{0, 0, 1, 1}));
         System.out.println(mcs.minCostClimbingStairsRec(new int[]{0, 0, 1, 1}));
         System.out.println(mcs.minCostClimbingStairsDP(new int[]{0, 0, 1, 1}));
-        System.out.println(mcs.minCostClimbingStairsDP(new int[]{0, 0, 0, 1}));
     }
 }
