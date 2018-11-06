@@ -14,6 +14,9 @@ public class Triangle {
         int[] min = new int[n + 1];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = 0; j <= i; j++) { // number of triangle.get(i)
+                //   Math.min(min[j], min[j+1]) + cur
+                //           /          \
+                //        min[j]      min[j+1]
                 min[j] = Math.min(min[j], min[j + 1]) + triangle.get(i).get(j);
             }
             System.out.println(Arrays.toString(min));
