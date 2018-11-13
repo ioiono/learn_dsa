@@ -18,18 +18,19 @@ public class QuickSort {
         a[j] = temp;
     }
 
+    // Always pick last element as pivot
     public int partition(int[] a, int start, int end) {
-        int pIndex = start;
+        int partitionIndex = start;
 
         int pivot = a[end];
         for (int i = start; i < end; i++) {
             if (a[i] <= pivot) {
-                swap(a, i, pIndex);
-                pIndex++;
+                swap(a, i, partitionIndex);
+                partitionIndex++;
             }
         }
-        swap(a, pIndex, end);
-        return pIndex;
+        swap(a, partitionIndex, end);
+        return partitionIndex;
     }
 
     public void quickSort(int[] a, int start, int end) {
