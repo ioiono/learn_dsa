@@ -36,6 +36,16 @@ public class QuickSortWhile {
 
     }
 
+    private void test(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                System.out.println("NO!");
+                return;
+            }
+        }
+        System.out.println("YES!");
+    }
+
     public void sort(int[] arr) {
         this.quickSort(arr, 0, arr.length - 1);
     }
@@ -45,5 +55,6 @@ public class QuickSortWhile {
         int[] nums = {-9, 4, -1, 3, 2, 1, 12, 4, 5, 3};
         q.sort(nums);
         System.out.println(Arrays.toString(nums));
+        q.test(nums);
     }
 }
