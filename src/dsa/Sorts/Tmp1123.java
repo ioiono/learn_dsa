@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public class Tmp1123 {
     public void sort(int[] arr) {
-        this.quickSort(arr,0,arr.length -1);
+        this.quickSort(arr, 0, arr.length - 1);
     }
 
     private void quickSort(int[] arr, int start, int end) {
         if (start >= end) return;
         int pIndex = this.partition(arr, start, end);
-        this.quickSort(arr, start, pIndex-1);
+        this.quickSort(arr, start, pIndex - 1);
         this.quickSort(arr, pIndex + 1, end);
     }
 
@@ -23,7 +23,7 @@ public class Tmp1123 {
                 pIndex++;
             }
         }
-        this.swap(arr, pIndex,end);
+        this.swap(arr, pIndex, end);
         return pIndex;
 
     }
