@@ -45,6 +45,22 @@ public class MinimumDepthofBinaryTree {
         if (node.right != null) helper(node.right, ht + 1);
     }
 
+
+    public int minDepth3(TreeNode root) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return 1;
+        int l = minDepth3(root.left);
+        int r = minDepth3(root.right);
+
+        if (root.left == null) {
+            return 1 + r;
+        }
+        if (root.right == null) {
+            return 1 + l;
+        }
+        return Math.min(l, r) + 1;
+    }
+
     public static void main(String[] args) {
         Codec cc = new Codec();
         TreeNode rt = cc.deserialize("3,9,null,null,20,15,null,null,7,null,null");
@@ -52,5 +68,6 @@ public class MinimumDepthofBinaryTree {
         MinimumDepthofBinaryTree m = new MinimumDepthofBinaryTree();
         System.out.println(m.minDepth(rt));
         System.out.println(m.minDepth2(rt));
+        System.out.println(m.minDepth3(rt));
     }
 }
