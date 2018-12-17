@@ -35,6 +35,7 @@ public class CountUnivalueSubtrees {
         return res;
     }
 
+    // returns true if subtrees under root is single
     public boolean helper(TreeNode root) {
         if (root == null) return true;
 
