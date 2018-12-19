@@ -26,13 +26,15 @@ public class KthLargestElementinanArray {
             pq.offer(val);
 
             if (pq.size() > k) {
-                pq.poll();
+                pq.poll(); // polls smallest el first
             }
         }
+        System.out.println(pq); // k largest els
         return pq.peek();
     }
 
     /**
+     * selection algorithm (based on the partition method - the same one as used in quick sort).
      * O(N) guaranteed running time + O(1) space
      *
      * @param nums
@@ -59,21 +61,33 @@ public class KthLargestElementinanArray {
         return nums[k];
     }
 
-    private int partition(int[] a, int lo, int hi) {
+    private int partition(int[] a, int start, int end) {
+       final int pivot = a[end];
+        int pIndex = start;
 
-        int i = lo;
-        int j = hi + 1;
-        while (true) {
-            while (i < hi && less(a[++i], a[lo])) ;
-            while (j > lo && less(a[lo], a[--j])) ;
-            if (i >= j) {
-                break;
+        for (int i = start; i < end; i++) {
+            if (less(a[i] , pivot)) {
+                this.exch(a, pIndex++, i);
             }
-            exch(a, i, j);
         }
-        exch(a, lo, j);
-        return j;
+        exch(a, pIndex, end);
+        return pIndex;
     }
+//    private int partition(int[] a, int lo, int hi) {
+//
+//        int i = lo;
+//        int j = hi + 1;
+//        while (true) {
+//            while (i < hi && less(a[++i], a[lo])) ;
+//            while (j > lo && less(a[lo], a[--j])) ;
+//            if (i >= j) {
+//                break;
+//            }
+//            exch(a, i, j);
+//        }
+//        exch(a, lo, j);
+//        return j;
+//    }
 
     private void exch(int[] a, int i, int j) {
         final int tmp = a[i];
@@ -86,16 +100,15 @@ public class KthLargestElementinanArray {
     }
 
     private void shuffle(int a[]) {
-
         final Random random = new Random();
         for (int ind = 1; ind < a.length; ind++) {
-            final int r = random.nextInt(ind + 1);
+            final int r = random.nextInt(ind + 1); // [0, idn]
             exch(a, ind, r);
         }
     }
 
     public static void main(String[] args) {
-        int[] ints = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
+        int[] ints = new int[]{-1, 0, 1, 2, 3, 4, 5, 6, 7, 8};
         KthLargestElementinanArray k = new KthLargestElementinanArray();
         System.out.println(k.findKthLargest(ints, 4));
         System.out.println(k.findKthLargest2(ints, 4));

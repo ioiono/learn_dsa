@@ -1,6 +1,7 @@
 package fmt.BST;
 
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 class KthLargest {
@@ -44,7 +45,7 @@ public class KthLargestElementinaStream {
         System.out.println(kthLargest.add(10));
         System.out.println(kthLargest.add(9));
         System.out.println(kthLargest.add(4));
-//
+
 //        PriorityQueue<Integer> que = new PriorityQueue<>(10, Comparator.reverseOrder());
 //        que.offer(1);
 //        que.offer(3);
@@ -55,5 +56,15 @@ public class KthLargestElementinaStream {
 //        while (!que.isEmpty()) {
 //            System.out.println(que.poll());
 //        }
+        PriorityQueue<Integer> que2 = new PriorityQueue<>();
+        que2.offer(1);
+        que2.offer(3);
+        que2.offer(2);
+        que2.offer(9);
+
+        System.out.println(que2);
+        while (!que2.isEmpty()) {
+            System.out.println(que2.poll());
+        }
     }
 }
