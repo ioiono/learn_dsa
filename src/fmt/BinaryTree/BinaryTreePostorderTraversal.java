@@ -3,7 +3,27 @@ package fmt.BinaryTree;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
-
+///**
+// * Definition for a binary tree node.
+// * function TreeNode(val) {
+// *     this.val = val;
+// *     this.left = this.right = null;
+// * }
+// */
+///**
+// * @param {TreeNode} root
+// * @return {number[]}
+// */
+//var postorderTraversal = function(root) {
+//    if(!root) return [];
+//    let res = [];
+//    const l = postorderTraversal(root.left);
+//    const r = postorderTraversal(root.right);
+//
+//    res = [...res, ...l, ...r, root.val];
+//    return res;
+//
+//};
 public class BinaryTreePostorderTraversal {
     public List<Integer> postorderTraversal(TreeNode root) {
 
