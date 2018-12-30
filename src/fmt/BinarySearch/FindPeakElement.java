@@ -22,17 +22,17 @@ public class FindPeakElement {
     }
 
     public int findPeakElement2(int[] A) {
-        int lo = 0, hi = A.length;
-        while (lo < hi) {
-            int mi = lo + (hi - lo) / 2;
+        int l = 0, h = A.length;
+        while (l < h) {
+            int m = l + (h - l) / 2;
             // Find the smallest l such that A[l] > A[l + 1].
-
-            if (mi + 1 < A.length && A[mi] < A[mi + 1])
-                lo = mi + 1;
-            else
-                hi = mi;
+            if (m + 1 >= A.length || A[m] > A[m + 1]) {
+                h = m;
+            } else {
+                l = m + 1;
+            }
         }
-        return lo;
+        return l;
     }
 
     public static void main(String[] args) {
