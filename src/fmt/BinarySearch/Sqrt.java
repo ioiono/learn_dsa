@@ -12,7 +12,7 @@ public class Sqrt {
     public int mySqrt(int x) {
         int lo = 1;
         int hi = x;
-        int res = -1;
+        int res = 0;
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
             if (mid > x / mid) {

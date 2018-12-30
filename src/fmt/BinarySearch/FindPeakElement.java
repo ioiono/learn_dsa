@@ -21,6 +21,20 @@ public class FindPeakElement {
         return -1;
     }
 
+    public int findPeakElement2(int[] A) {
+        int lo = 0, hi = A.length;
+        while (lo < hi) {
+            int mi = lo + (hi - lo) / 2;
+            // Find the smallest l such that A[l] > A[l + 1].
+
+            if (mi + 1 < A.length && A[mi] < A[mi + 1])
+                lo = mi + 1;
+            else
+                hi = mi;
+        }
+        return lo;
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{1, 2, 3, 1};
         FindPeakElement fpe = new FindPeakElement();
