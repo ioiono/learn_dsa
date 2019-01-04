@@ -34,7 +34,8 @@ public class SumofLeftLeaves {
         }
     }
     // Iterative method. Here for each node in the tree we check whether its left child is a leaf.
-    // If it is true, we add its value to answer, otherwise add left child to the stack to process it later. For right child we add it to stack only if it is not a leaf.
+    // If it is true, we add its value to answer, otherwise add left child to the stack to process it later. For
+    // right child we add it to stack only if it is not a leaf.
 
     public int sumOfLeftLeavesIter(TreeNode root) {
         if (root == null) return 0;
@@ -42,7 +43,7 @@ public class SumofLeftLeaves {
         Stack<TreeNode> stack = new Stack<TreeNode>();
         stack.push(root);
 
-        while (!stack.empty()) {
+        while ( !stack.empty()) {
             TreeNode node = stack.pop();
             if (node.left != null) {
                 if (node.left.left == null && node.left.right == null)
@@ -58,12 +59,29 @@ public class SumofLeftLeaves {
         return ans;
     }
 
+    public int sumOfLeftLeaves2(TreeNode root) {
+        if (root == null || root.left == null && root.right == null) return 0;
+        return helper2(root);
+    }
+
+    private int helper2(TreeNode root) {
+        if (root == null) return 0;
+        if (root.left == null && root.right == null) return root.val;
+
+        int l = helper2(root.left);
+        if (root.right != null && root.right.left == null && root.right.right == null) return l;
+
+        int r = helper2(root.right);
+        return l + r;
+    }
+
     public static void main(String[] args) {
         Codec cc = new Codec();
         TreeNode root = cc.deserialize("3,9,null,null,20,15,null,null,7,null,null,");
         SumofLeftLeaves sum = new SumofLeftLeaves();
 
         System.out.println(sum.sumOfLeftLeaves(root));
+        System.out.println(sum.sumOfLeftLeaves2(root));
         System.out.println(sum.sumOfLeftLeavesIter(root));
     }
 }

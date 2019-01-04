@@ -1,6 +1,6 @@
 package fmt.BinarySearch;
 
-public class BS {
+public class BinarySearch {
     public int search(int[] nums, int target) {
         // [l, r]
         int lo = 0;
@@ -97,14 +97,14 @@ public class BS {
 
     public static void main(String[] args) {
         int[] ints = new int[]{1, 2, 2, 2, 4, 4, 5, 9, 9, 9, 12};
-        //        System.out.println(new BS().searchLowerBound(ints, 2));
-        //        System.out.println(new BS().searchUpperBound(ints, 2));
-        //        System.out.println(new BS().search(ints, 2));
+        //        System.out.println(new BinarySearch().searchLowerBound(ints, 2));
+        //        System.out.println(new BinarySearch().searchUpperBound(ints, 2));
+        //        System.out.println(new BinarySearch().search(ints, 2));
         for (int num : ints) {
-            System.out.println(new BS().search2(ints, num));
+            System.out.println(new BinarySearch().search2(ints, num));
         }
-        System.out.println(new BS().search2(ints, -1));
-        System.out.println(new BS().search2(ints, 9));
-        //        System.out.println(new BS().searchRec(ints, 2));
+        System.out.println(new BinarySearch().search2(ints, -1));
+        System.out.println(new BinarySearch().search2(ints, 9));
+        //        System.out.println(new BinarySearch().searchRec(ints, 2));
     }
 }
