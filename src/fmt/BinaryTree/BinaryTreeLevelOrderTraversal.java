@@ -7,19 +7,20 @@ import java.util.Queue;
 
 public class BinaryTreeLevelOrderTraversal {
     public List<List<Integer>> levelOrderBFS(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
         List<List<Integer>> wrapList = new LinkedList<>();
 
         if (root == null) return wrapList;
+        Queue<TreeNode> queue = new LinkedList<>();
 
         queue.offer(root);
         while (!queue.isEmpty()) {
             int levelNum = queue.size(); // ps
             List<Integer> subList = new LinkedList<>();
             for (int i = 0; i < levelNum; i++) {
-                if (queue.peek().left != null) queue.offer(queue.peek().left);
-                if (queue.peek().right != null) queue.offer(queue.peek().right);
-                subList.add(queue.poll().val);
+                TreeNode cur = queue.poll();
+                subList.add(cur.val);
+                if (cur.left != null) queue.offer(cur.left);
+                if (cur.right != null) queue.offer(cur.right);
             }
             wrapList.add(subList);
         }
@@ -37,7 +38,7 @@ public class BinaryTreeLevelOrderTraversal {
         if (height >= res.size()) {
             res.add(new LinkedList<>()); // add new []
         }
-        res.get(height).add(root.val); // preorder actually in pre post all works
+        res.get(height).add(root.val); // preorder here. actually in pre post all works
         levelHelper(res, root.left, height + 1);
         levelHelper(res, root.right, height + 1);
     }
