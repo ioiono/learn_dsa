@@ -41,6 +41,22 @@ public class BinaryTreePostorderTraversal {
 
     }
 
+    public List<Integer> postorderTraversalFP(TreeNode root) {
+
+        LinkedList<Integer> res = new LinkedList<>();
+        if (root == null) return res;
+
+        List<Integer> l = postorderTraversalFP(root.left);
+        List<Integer> r = postorderTraversalFP(root.right);
+
+        res.addAll(l);
+        res.addAll(r);
+        res.add(root.val);
+
+        return res;
+    }
+
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(0);
 
@@ -49,6 +65,7 @@ public class BinaryTreePostorderTraversal {
         root.right = new TreeNode(3);
         BinaryTreePostorderTraversal b = new BinaryTreePostorderTraversal();
         System.out.println(b.postorderTraversal(root));
+        System.out.println(b.postorderTraversalFP(root));
 
     }
 }
