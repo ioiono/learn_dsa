@@ -37,11 +37,11 @@ public class BinaryTreeMaximumPathSum {
     }
 
     private int helper(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
+        if (root == null) return 0;
+
         int l = Math.max(0, helper(root.left));
         int r = Math.max(0, helper(root.right));
+
         int sum = l + r + root.val;
         res = Math.max(res, sum);
         // second res contains the left sub-tree and right sub-tree.

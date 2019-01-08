@@ -17,6 +17,7 @@ public class PathSumII {
         path.add(root.val);
         if (root.left == null && root.right == null && cur == root.val) { // leaf node
             res.add(new ArrayList<>(path)); // copy of path
+            // should not return !! need to remove last node
         }
         if (root.left != null)    dfs(root.left, cur - root.val, path, res);
         if (root.right != null)   dfs(root.right, cur - root.val, path, res);
