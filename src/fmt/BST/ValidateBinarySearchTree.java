@@ -19,7 +19,7 @@ public class ValidateBinarySearchTree {
     public boolean isValidBSTII(TreeNode root) {
         if (root == null) return true;
 
-        long min = Long.MIN_VALUE;
+        Integer min = null;
 
         Deque<TreeNode> stack = new LinkedList<>();
         TreeNode cur = root;
@@ -30,7 +30,7 @@ public class ValidateBinarySearchTree {
             }
             TreeNode top = stack.pop();
 
-            if (top.val <= min) return false;
+            if (min != null && top.val <= min) return false;
             min = top.val;
 
             cur = top.right;
