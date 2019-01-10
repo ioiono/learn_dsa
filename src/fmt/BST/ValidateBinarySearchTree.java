@@ -4,6 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class ValidateBinarySearchTree {
+    // PS must use long here
     public boolean isValidBST(TreeNode root) {
         return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
@@ -23,18 +24,19 @@ public class ValidateBinarySearchTree {
         Deque<TreeNode> stack = new LinkedList<>();
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
-            if (cur != null) {
+            while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
-            } else {
-                TreeNode top = stack.pop();
-
-                if (top.val <= min) return false;
-                min = top.val;
-
-                cur = top.right;
             }
+            TreeNode top = stack.pop();
+
+            if (top.val <= min) return false;
+            min = top.val;
+
+            cur = top.right;
+
         }
+
 
         return true;
     }
