@@ -41,4 +41,11 @@ public class UnionFind {
         }
         return u;
     }
+
+    private int find2(int u) {
+        if (parents[u] != u) { // not root
+            parents[u] = find2(parents[u]); // point parents to root
+        }
+        return parents[u];
+    }
 }

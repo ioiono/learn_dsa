@@ -43,10 +43,6 @@ public class NumbersOfIslands {
         for (int[] dir : dirs) {
             merge(grid, i + dir[0], j + dir[1]);
         }
-//        merge(grid, i - 1, j);
-//        merge(grid, i + 1, j);
-//        merge(grid, i, j - 1);
-//        merge(grid, i, j + 1);
     }
 
     ////////////////////////////////////////////////////////////////////
