@@ -27,6 +27,36 @@ package fmt.BinaryTree;
  *
  * Output: 42
  */
+
+/**
+ * Facebook
+ * |
+ * 23
+ *
+ * Google
+ * |
+ * 6
+ *
+ * Amazon
+ * |
+ * 3
+ *
+ * Walmart Labs
+ * |
+ * 3
+ *
+ * Microsoft
+ * |
+ * 2
+ *
+ * Baidu
+ * |
+ * 2
+ *
+ * Apple
+ * |
+ * 2
+ */
 public class BinaryTreeMaximumPathSum {
     private int res = Integer.MIN_VALUE;
     // O(N) O(Height)
