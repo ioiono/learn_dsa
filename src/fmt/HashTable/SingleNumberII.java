@@ -14,6 +14,7 @@ package fmt.HashTable;
  * <p>
  * Input: [0,1,0,1,0,1,99] Output: 99
  */
+
 public class SingleNumberII {
     public int singleNumber(int[] nums) {
         int ones = 0, twos = 0;

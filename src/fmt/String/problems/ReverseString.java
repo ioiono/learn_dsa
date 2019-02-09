@@ -29,9 +29,38 @@ public class ReverseString {
                         reverseString(str.substring(0, len / 2))
         );
     }
+    private static void printReverse(char [] str) {
+        helper(0, str);
+        System.out.println();
+    }
 
+    private static void helper(int index, char [] str) {
+        if (str == null || index >= str.length) {
+            return;
+        }
+        helper(index + 1, str);
+        System.out.print(str[index]);
+    }
+    public static void reverseString2(char[] s) {
+        helper(0, s.length - 1, s);
+    }
+
+    private static void helper(int start, int end, char [] s) {
+        if (start >= end) {
+            return;
+        }
+        // swap between the first and the last elements.
+        char tmp = s[start];
+        s[start] = s[end];
+        s[end] = tmp;
+
+        helper(start + 1, end - 1, s);
+    }
     public static void main(String[] args) {
         String str = "qwerty1";
+
+        printReverse(str.toCharArray());
+
         System.out.println(reverseString(str));
         System.out.println(reverseString1(str));
         System.out.println(reverseStringRec(str));
