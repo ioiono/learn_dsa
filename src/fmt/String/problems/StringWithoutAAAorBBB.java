@@ -31,6 +31,63 @@ public class StringWithoutAAAorBBB {
         return ans.toString();
     }
 
+    public String strWithout3a3b2(int A, int B) {
+        char[] ret = new char[A + B];
+        for (int i = 0; i < ret.length; i++) {
+            if (i >= 2 && ret[i - 1] == ret[i - 2]) {
+                if (ret[i - 1] == 'a') {
+                    ret[i] = 'b';
+                    B--;
+                } else {
+                    ret[i] = 'a';
+                    A--;
+                }
+            } else {
+                if (A > B) {
+                    ret[i] = 'a';
+                    A--;
+                } else {
+                    ret[i] = 'b';
+                    B--;
+                }
+            }
+        }
+        return new String(ret);
+    }
+
+    public String strWithout3a3b3(int A, int B) {
+        StringBuilder sb = new StringBuilder();
+        char a = 'a';
+        char b = 'b';
+        if (B > A) {
+            int t = A;
+            A = B;
+            B = t;
+
+            char ch = a;
+            a = b;
+            b = ch;
+        }
+
+        while (A > 0 || B > 0) {
+            if (A > 0) {
+                sb.append(a);
+                A--;
+            }
+            if (A > B) {
+                sb.append(a);
+                A--;
+            }
+            if (B > 0) {
+                sb.append(b);
+                B--;
+            }
+        }
+
+        return sb.toString();
+
+    }
+
     public static void main(String[] args) {
         StringWithoutAAAorBBB s = new StringWithoutAAAorBBB();
 
