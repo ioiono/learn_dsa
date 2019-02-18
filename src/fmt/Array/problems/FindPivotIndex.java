@@ -2,7 +2,7 @@ package fmt.Array.problems;
 
 public class FindPivotIndex {
     private static int pivotIndex(int[] nums) {
-        // if sumL * 2==  sumTotal - num[i]; return i;
+        // if sumL * 2 ==  sumTotal - num[i]; return i;
         int sum = 0;
         for (int num : nums) {
             sum += num;
@@ -19,7 +19,7 @@ public class FindPivotIndex {
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 7, 3, 6, 5, 6};
-        int[] arr2 = new int[]{1, 2,3};
+        int[] arr2 = new int[]{1, 2, 3};
         System.out.println(pivotIndex(arr));
         System.out.println(pivotIndex(arr2));
     }
