@@ -5,12 +5,12 @@ import java.util.Comparator;
 
 public class MeetingRooms {
     /**
-     * Because we have two check every meeting with every other meeting, the total run time is O(n^2)
-     * No additional space is used, so the space complexity is O(1).
-     * @param intervals
-     * @return
+     * Because we have two check every meeting with every other meeting, the total run time is O(n^2) No additional
+     * space is used, so the space complexity is O(1).
      *
-     * 186 ms, faster than 5.24% of Java online submissions for Meeting Rooms.
+     * @param intervals
+     *
+     * @return 186 ms, faster than 5.24% of Java online submissions for Meeting Rooms.
      */
     public boolean canAttendMeetings(Interval[] intervals) {
         for (int i = 0; i < intervals.length; i++) {
@@ -27,14 +27,14 @@ public class MeetingRooms {
     }
 
     /**
-     * Time complexity : (nlogn). The time complexity is dominated by sorting. Once the array has been
-     * sorted, only O(n) time is taken to go through the array and determine if there is any overlap.
-     *
+     * Time complexity : (nlogn). The time complexity is dominated by sorting. Once the array has been sorted, only O(n)
+     * time is taken to go through the array and determine if there is any overlap.
+     * <p>
      * Space complexity : O(1). Since no additional space is allocated.
-     * @param intervals
-     * @return
      *
-     * 5 ms, faster than 93.18% of Java online submissions for Meeting Rooms.
+     * @param intervals
+     *
+     * @return 5 ms, faster than 93.18% of Java online submissions for Meeting Rooms.
      */
     public boolean canAttendMeetings2(Interval[] intervals) {
         Arrays.sort(intervals, new Comparator<Interval>() {

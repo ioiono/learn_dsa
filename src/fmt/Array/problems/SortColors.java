@@ -14,7 +14,7 @@ public class SortColors {
                 ones++;
             }
         }
-        System.out.println(ones);
+//        System.out.println(ones);
         for (int i = 0; i < nums.length; i++) {
             if (i < zeros) {
                 nums[i] = 0;

@@ -42,7 +42,7 @@ public class BinarySearch {
         return -1;
     }
 
-    // lower_bound
+    // lower_bound (>= target)
     public int searchLowerBound(int[] nums, int target) {
         // [l, r)
         int l = 0;
@@ -60,7 +60,7 @@ public class BinarySearch {
         return l;
     }
 
-    // upper_bound
+    // upper_bound (> target)
 
     public int searchUpperBound(int[] nums, int target) {
         // [l, r)
@@ -105,6 +105,7 @@ public class BinarySearch {
         }
         System.out.println(new BinarySearch().search2(ints, -1));
         System.out.println(new BinarySearch().search2(ints, 9));
+        System.out.println(new BinarySearch().searchLowerBound(ints, 9));
         //        System.out.println(new BinarySearch().searchRec(ints, 2));
     }
 }
