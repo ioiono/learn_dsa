@@ -12,4 +12,11 @@ public class AddStrings {
         }
         return sb.reverse().toString();
     }
+
+    public static void main(String[] args) {
+        String a = "1234567";
+        String b = "30";
+        System.out.println(new AddStrings().addStrings(a, b));
+
+    }
 }
