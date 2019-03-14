@@ -6,7 +6,7 @@ import java.util.Queue;
 public class MaximumDepthofBinaryTree {
     private int answer = 0;        // don't forget to initialize answer before call maximum_depth
 
-    //"Top-down" Solution
+    //"Top-down" Main
     private void maximum_depth(TreeNode root, int depth) {
         if (root == null) {
             return;
@@ -19,7 +19,7 @@ public class MaximumDepthofBinaryTree {
     }
 
     // use this
-    //"Bottom-up" Solution
+    //"Bottom-up" Main
     public int maximum_depth(TreeNode root) {
         if (root == null) return 0;                      // return 0 for null node
         int left_depth = maximum_depth(root.left);

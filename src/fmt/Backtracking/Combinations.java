@@ -22,6 +22,7 @@ public class Combinations {
             else res.add(tmp);
             return;
         }
+
         for (int i = 1; i <= n; i++) {
             if (list.contains(i)) continue;
             list.add(i);
