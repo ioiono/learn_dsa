@@ -3,6 +3,9 @@ package fmt.DynamicProgramming;
 import java.util.Arrays;
 
 /**
+ *
+ * https://segmentfault.com/a/1190000006325321
+ *
  * Given n items with size Ai, an integer m denotes the size of a backpack. How full you can fill this backpack?
  * <p>
  * Example If we have 4 items with size [2, 3, 5, 7], the backpack size is 11, we can select [2, 3, 5], so that the max
